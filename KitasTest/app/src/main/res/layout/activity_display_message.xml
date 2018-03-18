@@ -23,7 +23,7 @@
         android:id="@+id/textView8"
         android:layout_width="369dp"
         android:layout_height="61dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="240dp"
         android:text="what a dumbass xddddd"
         android:textAlignment="center"
         android:textSize="6sp"

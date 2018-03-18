@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/menu_background"
+    tools:ignore="ExtraText">
+    getResources().getColor(R.color)
+
+    <TextView
+        android:id="@+id/krypto"
+        android:layout_width="261dp"
+        android:layout_height="76dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/black_ops_one"
+        android:inputType="text"
+        android:text="Krypto"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/helper"
+        android:layout_width="261dp"
+        android:layout_height="76dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/black_ops_one"
+        android:inputType="text"
+        android:text="Helper"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo-background"
+        android:layout_width="479dp"
+        android:layout_height="117dp"
+        android:layout_marginTop="16dp"
+        android:elevation="-3dp"
+        app:layout_constraintEnd_toStartOf="@+id/helper"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/krypto"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:color/darker_gray" />
+
+    <ImageView
+        android:id="@+id/graph-logo"
+        android:layout_width="115dp"
+        android:layout_height="123dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:adjustViewBounds="false"
+        android:clickable="true"
+        android:elevation="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/graph"
+        app:layout_constraintEnd_toEndOf="@+id/graph"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="@+id/graph"
+        app:layout_constraintTop_toTopOf="@+id/graph"
+        app:srcCompat="@drawable/ic_graph_logo" />
+
+    <ImageView
+        android:id="@+id/money-logo"
+        android:layout_width="116dp"
+        android:layout_height="123dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:elevation="3dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/money"
+        app:layout_constraintEnd_toEndOf="@+id/money"
+        app:layout_constraintStart_toStartOf="@+id/money"
+        app:layout_constraintTop_toTopOf="@+id/money"
+        app:srcCompat="@drawable/ic_monetization_on_black_24dp" />
+
+    <Button
+        android:id="@+id/graph"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/menu_accent"
+        android:elevation="0dp"
+        android:fontFamily="serif-monospace"
+        android:gravity="bottom|center_horizontal"
+        android:text="Graph"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/money"
+        app:layout_constraintTop_toTopOf="@+id/money" />
+
+    <Button
+        android:id="@+id/money"
+        android:layout_width="167dp"
+        android:layout_height="160dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/menu_accent"
+        android:fontFamily="serif-monospace"
+        android:gravity="bottom|center_horizontal"
+        android:text="Money"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toStartOf="@+id/graph"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo-background" />
+
+    <Button
+        android:id="@+id/mid-button"
+        android:layout_width="348dp"
+        android:layout_height="92dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/menu_accent"
+        android:elevation="0dp"
+        android:fontFamily="serif-monospace"
+        android:gravity="bottom|center_horizontal"
+        android:text="News"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/money" />
+
+    <Button
+        android:id="@+id/bot-button2"
+        android:layout_width="221dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/menu_accent"
+        android:elevation="0dp"
+        android:fontFamily="serif-monospace"
+        android:gravity="bottom|center_horizontal"
+        android:text="Options"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mid-button" />
+
+    <Button
+        android:id="@+id/bot-button"
+        android:layout_width="102dp"
+        android:layout_height="91dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/menu_accent"
+        android:elevation="0dp"
+        android:fontFamily="serif-monospace"
+        android:gravity="bottom|center_horizontal"
+        android:text="Info"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bot-button2"
+        app:layout_constraintTop_toBottomOf="@+id/mid-button" />
+
+    <TextView
+        android:id="@+id/Version"
+        android:layout_width="246dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="32dp"
+        android:fontFamily="serif-monospace"
+        android:text="Version a1.0"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
