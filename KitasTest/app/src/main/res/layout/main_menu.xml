@@ -84,10 +84,10 @@
         android:layout_marginTop="4dp"
         android:elevation="3dp"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/money"
-        app:layout_constraintEnd_toEndOf="@+id/money"
-        app:layout_constraintStart_toStartOf="@+id/money"
-        app:layout_constraintTop_toTopOf="@+id/money"
+        app:layout_constraintBottom_toBottomOf="@+id/moneyBut"
+        app:layout_constraintEnd_toEndOf="@+id/moneyBut"
+        app:layout_constraintStart_toStartOf="@+id/moneyBut"
+        app:layout_constraintTop_toTopOf="@+id/moneyBut"
         app:srcCompat="@drawable/ic_monetization_on_black_24dp" />
 
     <Button
@@ -104,11 +104,11 @@
         android:textColor="@android:color/white"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/money"
-        app:layout_constraintTop_toTopOf="@+id/money" />
+        app:layout_constraintStart_toEndOf="@+id/moneyBut"
+        app:layout_constraintTop_toTopOf="@+id/moneyBut" />
 
     <Button
-        android:id="@+id/money"
+        android:id="@+id/moneyBut"
         android:layout_width="167dp"
         android:layout_height="160dp"
         android:layout_marginEnd="10dp"
@@ -145,7 +145,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/money" />
+        app:layout_constraintTop_toBottomOf="@+id/moneyBut" />
 
     <Button
         android:id="@+id/bot-button2"
@@ -185,7 +185,6 @@
         android:id="@+id/Version"
         android:layout_width="246dp"
         android:layout_height="38dp"
-        android:layout_marginBottom="4dp"
         android:layout_marginLeft="32dp"
         android:fontFamily="serif-monospace"
         android:text="Version a1.0"
