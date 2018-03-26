@@ -17,5 +17,7 @@ public class crypto_list extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crypto_list);
         list = (ListView) findViewById(R.id.listView);
+        cryptoListExtra custom = new cryptoListExtra(this, trumpiniai, valiutos, imgid);
+        list.setAdapter(custom);
     }
 }
