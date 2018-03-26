@@ -65,7 +65,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:adjustViewBounds="false"
-        android:clickable="true"
+        android:clickable="false"
         android:elevation="3dp"
         app:layout_constraintBottom_toBottomOf="@+id/graph"
         app:layout_constraintEnd_toEndOf="@+id/graph"
@@ -82,8 +82,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
+        android:clickable="false"
         android:elevation="3dp"
-        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@+id/moneyBut"
         app:layout_constraintEnd_toEndOf="@+id/moneyBut"
         app:layout_constraintStart_toStartOf="@+id/moneyBut"
@@ -92,8 +92,8 @@
 
     <Button
         android:id="@+id/graph"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="10dp"
         android:background="@color/menu_accent"
@@ -109,8 +109,8 @@
 
     <Button
         android:id="@+id/moneyBut"
-        android:layout_width="167dp"
-        android:layout_height="160dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginEnd="10dp"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="32dp"
@@ -128,7 +128,7 @@
 
     <Button
         android:id="@+id/mid-button"
-        android:layout_width="348dp"
+        android:layout_width="320dp"
         android:layout_height="92dp"
         android:layout_marginEnd="32dp"
         android:layout_marginStart="32dp"
@@ -148,9 +148,10 @@
         app:layout_constraintTop_toBottomOf="@+id/moneyBut" />
 
     <Button
-        android:id="@+id/bot-button2"
-        android:layout_width="221dp"
+        android:id="@+id/optionsBut"
+        android:layout_width="208dp"
         android:layout_height="92dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:background="@color/menu_accent"
@@ -160,15 +161,17 @@
         android:text="Options"
         android:textColor="@android:color/white"
         android:textSize="28sp"
+        app:layout_constraintEnd_toStartOf="@+id/bot-button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mid-button" />
 
     <Button
         android:id="@+id/bot-button"
-        android:layout_width="102dp"
+        android:layout_width="90dp"
         android:layout_height="91dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:background="@color/menu_accent"
         android:elevation="0dp"
@@ -178,19 +181,23 @@
         android:textColor="@android:color/white"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bot-button2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/optionsBut"
         app:layout_constraintTop_toBottomOf="@+id/mid-button" />
 
     <TextView
         android:id="@+id/Version"
         android:layout_width="246dp"
-        android:layout_height="38dp"
-        android:layout_marginLeft="32dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="serif-monospace"
         android:text="Version a1.0"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/optionsBut"
+        app:layout_constraintVertical_bias="0.583" />
 
 </android.support.constraint.ConstraintLayout>

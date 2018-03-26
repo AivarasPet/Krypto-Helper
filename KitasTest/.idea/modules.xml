@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KitasTest.iml" filepath="$PROJECT_DIR$/KitasTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\User\Desktop\Arturo\Krypto\KitasTest\app\app.iml" filepath="C:\Users\User\Desktop\Arturo\Krypto\KitasTest\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/myapplication/myapplication.iml" filepath="$PROJECT_DIR$/myapplication/myapplication.iml" />
+      <module fileurl="file://C:\Users\User\Desktop\Arturo\Krypto\KitasTest\myapplication\myapplication.iml" filepath="C:\Users\User\Desktop\Arturo\Krypto\KitasTest\myapplication\myapplication.iml" />
     </modules>
   </component>
 </project>

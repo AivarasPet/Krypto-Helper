@@ -17,17 +17,25 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("native-lib");
     }
 
-    Button money_button;
+    Button money_button, options_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) { //onCreate is used to start an activity
         super.onCreate(savedInstanceState);        //super is used to call the parent class constructor
         setContentView(R.layout.main_menu);    //setContentView is used to set the xml
+
         money_button = (Button) findViewById(R.id.moneyBut);
+        options_button = (Button) findViewById(R.id.optionsBut);
 
         money_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,  crypto_list.class));
+            }
+        });
+        options_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,  Options.class));
             }
         });
 
