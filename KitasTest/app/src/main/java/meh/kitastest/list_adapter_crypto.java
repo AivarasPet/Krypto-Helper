@@ -19,8 +19,7 @@ package meh.kitastest;
 
 public class list_adapter_crypto extends BaseAdapter
 {
-    private String[] trumpinys;
-    private String[] pavadinimas;
+
     private Integer[] imgid;
     private  JSONArray textas;
 
@@ -30,8 +29,6 @@ public class list_adapter_crypto extends BaseAdapter
     {
         this.textas = textas;
         this.context = context;
-       // this.trumpinys= name;
-       // this.pavadinimas = mobile_no;
         this.imgid = imgid;
         this.inflater = context.getLayoutInflater();
     }
@@ -39,18 +36,19 @@ public class list_adapter_crypto extends BaseAdapter
     @Override
     public int getCount() {
         Log.d("buuuum", textas.length()+"");
-        return 11;
+        return textas.length();
     }
 
     @Override
     public Object getItem(int position) {
-        return textas.optJSONObject(position);
+        return null; //textas.optJSONObject(position);
     }
 
     @Override
     public long getItemId(int position) {
-        JSONObject jsonObject = textas.optJSONObject(position);
-        return jsonObject.optLong("id");
+        //JSONObject jsonObject = textas.optJSONObject(position);
+        //return jsonObject.optLong("id");
+        return 0;
     }
 
     @Override

@@ -1,8 +1,13 @@
 package meh.kitastest;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -13,16 +18,9 @@ public class crypto_list extends AppCompatActivity {
 
     ListView list;
 
-    String[] trumpiniai = {"BTC", "ETH", "LTC", "XRP"};
-    String[] valiutos = {"Bitcoin", "Ethereum", "Litecoin", "Ripple"};
     Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.litecoin,
-                     R.drawable.eos, R.drawable.stellar, R.drawable.cardano, R.drawable.neo, R.drawable.monero,
-                     R.drawable.iota, R.drawable.dash, R.drawable.tether, R.drawable.tron, R.drawable.nem,
-                     R.drawable.binance_coin, R.drawable.ethereum_classic, R.drawable.vechain, R.drawable.qtum,
-                     R.drawable.omisego, R.drawable.icon };/*R.drawable.lisk, R.drawable.bitcoin-gold, R.drawable.zcash,
-                     R.drawable.nano, R.drawable.verge, R.drawable.ontology, R.drawable.bytom, R.drawable.digixdao,
-                     R.drawable.populous, R.drawable.steem, R.drawable.bytecoin_bcn, R.drawable.bitshares, R.drawable.waves,
-                     R.drawable.stratis, R.drawable.rchain, R.drawable.siacoin, R.drawable.aetirnity, R.drawable.bitcoin_diamond};*/
+                     R.drawable.eos, R.drawable.stellar, R.drawable.cardano, R.drawable.neo,
+                     R.drawable.iota };
 
 
     @Override
@@ -38,23 +36,37 @@ public class crypto_list extends AppCompatActivity {
                 toliau(result);
             }
         });
-        dl.webSite = "https://api.coinmarketcap.com/v1/ticker/";
+        dl.webSite = "https://api.coinmarketcap.com/v1/ticker/?limit=10";
         dl.execute();
     }
-    private void toliau(String result){
+    private void toliau(final String result){
 
         try {
-            JSONArray textas = new JSONArray(result);
-            Log.d("myTag", textas.getJSONObject(0).getString("symbol").toString());
+            final JSONArray textas = new JSONArray(result);
+            //Log.d("myTag", textas.getJSONObject(0).getString("symbol").toString());
             //Log.d("Log.d", textas.length()+"");
 
             list = (ListView) findViewById(R.id.listView);
             list_adapter_crypto custom = new list_adapter_crypto(this, textas, imgid);
-            //list_adapter_crypto custom = new list_adapter_crypto(this, trumpiniai, valiutos, imgid);
             list.setAdapter(custom);
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent(crypto_list.this, currency_everything.class);
+                    intent.putExtra("jsonStr", result);
+                    intent.putExtra("kelintas", i);
+                    startActivity(intent);
+                }
+            });
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
     }
+
+    private void openList() {
+
+    }
+
 }
