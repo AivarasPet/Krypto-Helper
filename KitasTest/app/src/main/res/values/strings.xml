@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">Kitas Test</string>
     <string name="edit_message">Enter a message</string>
+    <string name="version">Version a1.0</string>
     <string name="button_send">Login</string>
+
+    <!-- MAIN MENU -->
+    <string name="logo_name_1">Krypto</string>
+    <string name="logo_name_2">Helper</string>
+
+    <string name="money_name">Money</string>
+    <string name="graph_name">Graph</string>
+    <string name="news_name">News</string>
+    <string name="options_name">Options</string>
+    <string name="info_name">Info</string>
+
 </resources>

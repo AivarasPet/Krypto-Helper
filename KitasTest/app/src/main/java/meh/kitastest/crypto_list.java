@@ -15,7 +15,14 @@ public class crypto_list extends AppCompatActivity {
 
     String[] trumpiniai = {"BTC", "ETH", "LTC", "XRP"};
     String[] valiutos = {"Bitcoin", "Ethereum", "Litecoin", "Ripple"};
-    Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.litecoin, R.drawable.ripple};
+    Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.litecoin,
+                     R.drawable.eos, R.drawable.stellar, R.drawable.cardano, R.drawable.neo, R.drawable.monero,
+                     R.drawable.iota, R.drawable.dash, R.drawable.tether, R.drawable.tron, R.drawable.nem,
+                     R.drawable.binance_coin, R.drawable.ethereum_classic, R.drawable.vechain, R.drawable.qtum,
+                     R.drawable.omisego, R.drawable.icon };/*R.drawable.lisk, R.drawable.bitcoin-gold, R.drawable.zcash,
+                     R.drawable.nano, R.drawable.verge, R.drawable.ontology, R.drawable.bytom, R.drawable.digixdao,
+                     R.drawable.populous, R.drawable.steem, R.drawable.bytecoin_bcn, R.drawable.bitshares, R.drawable.waves,
+                     R.drawable.stratis, R.drawable.rchain, R.drawable.siacoin, R.drawable.aetirnity, R.drawable.bitcoin_diamond};*/
 
 
     @Override
@@ -39,10 +46,11 @@ public class crypto_list extends AppCompatActivity {
         try {
             JSONArray textas = new JSONArray(result);
             Log.d("myTag", textas.getJSONObject(0).getString("symbol").toString());
+            //Log.d("Log.d", textas.length()+"");
 
             list = (ListView) findViewById(R.id.listView);
-           //list_adapter_crypto custom = new list_adapter_crypto(this, textas, imgid);
-            list_adapter_crypto custom = new list_adapter_crypto(this, trumpiniai, valiutos, imgid);
+            list_adapter_crypto custom = new list_adapter_crypto(this, textas, imgid);
+            //list_adapter_crypto custom = new list_adapter_crypto(this, trumpiniai, valiutos, imgid);
             list.setAdapter(custom);
         } catch (JSONException e) {
             e.printStackTrace();

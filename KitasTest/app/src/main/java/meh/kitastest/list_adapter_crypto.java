@@ -16,7 +16,7 @@ package meh.kitastest;
 /**
  * Created by Aivaras on 2018-03-26.
  */
-/*
+
 public class list_adapter_crypto extends BaseAdapter
 {
     private String[] trumpinys;
@@ -39,7 +39,7 @@ public class list_adapter_crypto extends BaseAdapter
     @Override
     public int getCount() {
         Log.d("buuuum", textas.length()+"");
-        return textas.length();
+        return 11;
     }
 
     @Override
@@ -63,6 +63,7 @@ public class list_adapter_crypto extends BaseAdapter
             holder.trump = (TextView) convertView.findViewById(R.id.trumpinys);
             holder.pavadin = (TextView) convertView.findViewById(R.id.pavadinimas);
             holder.img = (ImageView) convertView.findViewById(R.id.logo);
+            holder.kaina = (TextView) convertView.findViewById(R.id.price_usd);
 
             convertView.setTag(holder);
         }else{
@@ -73,6 +74,7 @@ public class list_adapter_crypto extends BaseAdapter
             holder.trump.setText(textas.getJSONObject(position).getString("symbol").toString());
             holder.pavadin.setText(textas.getJSONObject(position).getString("name").toString());
             holder.img.setImageResource(imgid[position]);
+            holder.kaina.setText("$ "+textas.getJSONObject(position).getString("price_usd").toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -81,15 +83,15 @@ public class list_adapter_crypto extends BaseAdapter
         return convertView;
     }
     class ViewHolder{
-        TextView trump, pavadin;
+        TextView trump, pavadin, kaina;
         ImageView img; // atskiri
 
     }
 }
-*/
+
 
 //jei ka:
-
+/*
 public class list_adapter_crypto extends BaseAdapter
 {
     private String[] trumpinys;
@@ -149,3 +151,4 @@ public class list_adapter_crypto extends BaseAdapter
 
     }
 }
+*/

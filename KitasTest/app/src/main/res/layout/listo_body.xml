@@ -48,6 +48,20 @@
             android:adjustViewBounds="false"
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/btc" />
+
+        <TextView
+            android:id="@+id/price_usd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/trumpinys"
+            android:layout_marginLeft="34dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="11dp"
+            android:layout_toEndOf="@+id/trumpinys"
+            android:layout_toRightOf="@+id/trumpinys"
+            android:fontFamily="@font/black_ops_one"
+            android:text="$"
+            android:textColor="@android:color/white" />
     </RelativeLayout>
 
 </LinearLayout>
