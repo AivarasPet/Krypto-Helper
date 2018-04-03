@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="text_fff_bops">
+        <item name="android:fontFamily">@font/black_ops_one</item>
+        <item name="android:textColor">#fff</item>
+    </style>
+
 </resources>

@@ -57,8 +57,7 @@ public class cryptoListExtra extends ArrayAdapter<String>{
             TextView txt1, txt2;
             ImageView img1;
             ViewHolder(View v) {
-                txt1 = (TextView) v.findViewById(R.id.trumpinys);
-                txt2 = (TextView) v.findViewById(R.id.pavadinimas);
+                //txt1 = (TextView) v.findViewById(R.id.trumpinys);
                 img1 = (ImageView) v.findViewById(R.id.logo);
             }
 

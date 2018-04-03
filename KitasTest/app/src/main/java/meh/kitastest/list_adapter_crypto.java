@@ -58,10 +58,11 @@ public class list_adapter_crypto extends BaseAdapter
         if(convertView==null){
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.listo_body, null);
-            holder.trump = (TextView) convertView.findViewById(R.id.trumpinys);
-            holder.pavadin = (TextView) convertView.findViewById(R.id.pavadinimas);
+            //holder.trump = (TextView) convertView.findViewById(R.id.trumpinys);
+            holder.pavadin = (TextView) convertView.findViewById(R.id.crypto_name);
             holder.img = (ImageView) convertView.findViewById(R.id.logo);
             holder.kaina = (TextView) convertView.findViewById(R.id.price_usd);
+            holder.pokytis = (TextView) convertView.findViewById(R.id.listChange24hr);
 
             convertView.setTag(holder);
         }else{
@@ -69,10 +70,17 @@ public class list_adapter_crypto extends BaseAdapter
         }
 
         try {
-            holder.trump.setText(textas.getJSONObject(position).getString("symbol").toString());
+            //holder.trump.setText(textas.getJSONObject(position).getString("symbol").toString());
             holder.pavadin.setText(textas.getJSONObject(position).getString("name").toString());
             holder.img.setImageResource(imgid[position]);
             holder.kaina.setText("$ "+textas.getJSONObject(position).getString("price_usd").toString());
+            String pokytis = textas.getJSONObject(position).getString("percent_change_24h").toString();
+            if(pokytis.startsWith("-")) {
+                pokytis.substring(1);
+                holder.pokytis.setText("▼"+pokytis+"%");
+            }
+            else holder.pokytis.setText("▲" + pokytis + "%");
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -81,7 +89,7 @@ public class list_adapter_crypto extends BaseAdapter
         return convertView;
     }
     class ViewHolder{
-        TextView trump, pavadin, kaina;
+        TextView trump, pavadin, kaina, pokytis;
         ImageView img; // atskiri
 
     }
