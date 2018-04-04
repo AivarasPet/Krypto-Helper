@@ -35,7 +35,7 @@ public class list_adapter_crypto extends BaseAdapter
 
     @Override
     public int getCount() {
-        Log.d("buuuum", textas.length()+"");
+        //Log.d("buuuum", textas.length()+"");
         return textas.length();
     }
 
@@ -76,7 +76,8 @@ public class list_adapter_crypto extends BaseAdapter
             holder.kaina.setText("$ "+textas.getJSONObject(position).getString("price_usd").toString());
             String pokytis = textas.getJSONObject(position).getString("percent_change_24h").toString();
             if(pokytis.startsWith("-")) {
-                pokytis.substring(1);
+               // pokytis.substring(2, pokytis.length());
+                pokytis = pokytis.replace("-","");
                 holder.pokytis.setText("▼"+pokytis+"%");
             }
             else holder.pokytis.setText("▲" + pokytis + "%");
