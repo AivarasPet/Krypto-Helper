@@ -14,7 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class crypto_list extends AppCompatActivity {
+public class MoneyActivity extends AppCompatActivity {
 
     ListView list;
 
@@ -52,7 +52,7 @@ public class crypto_list extends AppCompatActivity {
             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Intent intent = new Intent(crypto_list.this, currency_everything.class);
+                    Intent intent = new Intent(MoneyActivity.this, currency_everything.class);
                     intent.putExtra("jsonStr", result);
                     intent.putExtra("kelintas", i);
                     startActivity(intent);

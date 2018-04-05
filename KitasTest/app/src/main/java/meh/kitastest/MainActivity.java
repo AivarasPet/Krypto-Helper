@@ -8,6 +8,7 @@ import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -17,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("native-lib");
     }
 
-    Button money_button, options_button;
+    Button money_button, options_button, graph_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) { //onCreate is used to start an activity
         super.onCreate(savedInstanceState);        //super is used to call the parent class constructor
@@ -25,20 +26,35 @@ public class MainActivity extends AppCompatActivity {
 
         money_button = (Button) findViewById(R.id.moneyBut);
         options_button = (Button) findViewById(R.id.optionsBut);
+        graph_button = (Button) findViewById(R.id.graphBut);
 
         money_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,  crypto_list.class));
+                startActivity(new Intent(MainActivity.this,  MoneyActivity.class));
             }
         });
         options_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,  Options.class));
+                startActivity(new Intent(MainActivity.this,  OptionsActivity.class));
+            }
+        });
+        graph_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,  GraphActivity.class));
             }
         });
 
+
+/*
+        public void ThemeSwitch(View this){
+            boolean checked = ((Switch) this).isChecked();
+                if (checked)
+
+    }
+*/
 
     }
 
