@@ -1,24 +1,24 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!--                    DARK THEME                           -->
     <style name="DarkAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkDark</item>
+        <item name="colorAccent">@color/colorAccentDark</item>
+        <item name="android:background">@color/colorBackgroundDark</item>
+        <item name="android:textColor">@color/textDark</item>
+        <item name="android:fontFamily">@font/black_ops_one</item>
     </style>
 
-    <!--<style name="LightAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="menu_background">@color/menu_background</item>
-    </style> -->
-
-    <style name="text_fff_bops">
+    <!--                    LIGHT THEME                           -->
+    <style name="LightAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryLight</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkLight</item>
+        <item name="colorAccent">@color/colorAccentLight</item>
+        <item name="android:background">@color/colorBackgroundLight</item>]
+        <item name="android:textColor">@color/textLight</item>
         <item name="android:fontFamily">@font/black_ops_one</item>
-        <item name="android:textColor">#fff</item>
     </style>
 
 </resources>

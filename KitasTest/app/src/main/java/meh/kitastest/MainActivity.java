@@ -47,15 +47,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-/*
-        public void ThemeSwitch(View this){
-            boolean checked = ((Switch) this).isChecked();
-                if (checked)
-
-    }
-*/
-
     }
 
 
