@@ -23,12 +23,13 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
-public class GraphActivity extends AppCompatActivity {
+public class GraphActivity extends MainActivity {
 
     TextView testas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        enableTheme(useLightTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 

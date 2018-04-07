@@ -14,7 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MoneyActivity extends AppCompatActivity {
+public class MoneyActivity extends MainActivity {
 
     ListView list;
 
@@ -25,6 +25,7 @@ public class MoneyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        enableTheme(useLightTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crypto_list);
 

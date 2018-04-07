@@ -4,6 +4,8 @@ package meh.kitastest;
  * Created by Artis on 2018-03-26.
  */
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.ServiceWorkerClient;
@@ -18,28 +20,21 @@ public class OptionsActivity extends MainActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        enableTheme(useLightTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
-        setTheme(R.style.DarkAppTheme);
-/*
+
         Switch themeswitch = (Switch) findViewById(R.id.theme_switch);
-        themeswitch.setChecked()
+        themeswitch.setChecked(usabilityLightTheme());
         themeswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+                toggleTheme(isChecked);
 
-                    setTheme(R.style.LightAppTheme);
-                    super.onCreate(savedInstanceState);
-
-                } else {
-
-                    setTheme(R.style.DarkAppTheme);
-                    super.onCreate(savedInstanceState);
-
-                }
             }
-        });*/
+
+        });
     }
 
 

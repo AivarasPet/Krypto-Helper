@@ -24,7 +24,7 @@
 
     <Switch
         android:id="@+id/theme_switch"
-        android:textColor="@android:color/white"
+        android:textColor="?android:textColor"
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:layout_marginTop="28dp"
