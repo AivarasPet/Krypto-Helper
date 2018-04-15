@@ -29,7 +29,9 @@
         <activity android:name=".MoneyActivity" />
         <activity android:name=".OptionsActivity" />
         <activity android:name=".currency_everything" />
-        <activity android:name=".GraphActivity"></activity>
+        <activity android:name=".GraphActivity" />
+        <activity android:name=".NewsActivity" />
+        <activity android:name=".WebsiteActivity"></activity>
     </application>
 
 </manifest>

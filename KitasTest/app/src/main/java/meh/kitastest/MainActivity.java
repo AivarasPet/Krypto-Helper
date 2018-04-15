@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String PREF_LIGHT_THEME = "dark_theme";
     boolean useLightTheme;
     SharedPreferences preferences;
-    Button money_button, options_button, graph_button;
+    Button money_button, options_button, graph_button, news_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { //onCreate is used to start an activity
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         money_button = (Button) findViewById(R.id.moneyBut);
         options_button = (Button) findViewById(R.id.optionsBut);
         graph_button = (Button) findViewById(R.id.graphBut);
+        news_button = (Button) findViewById(R.id.newsBut);
 
         money_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,  GraphActivity.class));
+            }
+        });
+        news_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,  NewsActivity.class));
             }
         });
     }
@@ -111,6 +118,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this,  GraphActivity.class));
+            }
+        });
+        news_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,  NewsActivity.class));
             }
         });
         finish();
