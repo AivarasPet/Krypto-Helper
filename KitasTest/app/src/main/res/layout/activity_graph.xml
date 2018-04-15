@@ -68,5 +68,4 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="16dp" />
 
-
 </android.support.constraint.ConstraintLayout>

@@ -14,4 +14,18 @@
     <string name="options_name">Options</string>
     <string name="info_name">Info</string>
 
+    <!-- SPINNER DATA -->
+    <string-array name="cryptoNames">
+        <item>Bitcoin</item>
+        <item>Ethereum</item>
+        <item>Ripple</item>
+        <item>Bitcoin Cash</item>
+        <item>Litecoin</item>
+        <item>EOS</item>
+        <item>Cardano</item>
+        <item>Stellar</item>
+        <item>NEO</item>
+        <item>IOTA</item>
+    </string-array>
+
 </resources>

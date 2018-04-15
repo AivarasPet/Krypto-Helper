@@ -1,7 +1,6 @@
 package meh.kitastest;
 
         import android.app.Activity;
-        import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -11,7 +10,6 @@ package meh.kitastest;
 
         import org.json.JSONArray;
         import org.json.JSONException;
-        import org.json.JSONObject;
 
 /**
  * Created by Aivaras on 2018-03-26.
@@ -57,7 +55,7 @@ public class list_adapter_crypto extends BaseAdapter
         ViewHolder holder;
         if(convertView==null){
             holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.listo_body, null);
+            convertView = inflater.inflate(R.layout.activity_money, null);
             //holder.trump = (TextView) convertView.findViewById(R.id.trumpinys);
             holder.pavadin = (TextView) convertView.findViewById(R.id.crypto_name);
             holder.img = (ImageView) convertView.findViewById(R.id.logo);
@@ -137,7 +135,7 @@ public class list_adapter_crypto extends BaseAdapter
         ViewHolder holder;
         if(convertView==null){
             holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.listo_body, null);
+            convertView = inflater.inflate(R.layout.activity_money, null);
             holder.trump = (TextView) convertView.findViewById(R.id.trumpinys);
             holder.pavadin = (TextView) convertView.findViewById(R.id.pavadinimas);
             holder.img = (ImageView) convertView.findViewById(R.id.logo);

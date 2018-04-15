@@ -51,4 +51,17 @@
 
         tools:layout_editor_absoluteX="49dp" />
 
+    <!--  LANGUAGE SELECTOR  -->
+    <Spinner
+        android:id="@+id/language_spinner"
+        android:layout_width="368dp"
+        android:layout_height="29dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
+        android:tag="Language"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line_sep" />
+
 </android.support.constraint.ConstraintLayout>

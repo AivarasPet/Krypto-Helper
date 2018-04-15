@@ -35,21 +35,26 @@ import org.json.JSONObject;
 import java.util.Date;
 
 
-public class GraphActivity extends AppCompatActivity{
+public class GraphActivity extends MainActivity{
 
     TextView testas;
     GraphView graph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        enableTheme(useLightTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 
         testas = (TextView) findViewById(R.id.TestInGraph);
         graph = (GraphView) findViewById(R.id.graph);
 
+//  GETTING AN ARRAY
+//        getResources().getStringArray(R.array.menu);
+
         Spinner spinner = (Spinner) findViewById(R.id.dropDown);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.cryptoNames, android.R.layout.simple_spinner_item);
+
 // Specify the layout to use when the list of choices appears
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

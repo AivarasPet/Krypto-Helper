@@ -24,10 +24,6 @@ import java.util.Date;
 
 public class graph_adapter {
 
-
-
-
-
     TextView txt;
     public GraphView graph;
     Context context;
@@ -57,7 +53,7 @@ public class graph_adapter {
             Date date;
             final String[] diena = new String[32];
 
-
+        //KREIVE
             LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
             for(int x=0; x<30; x++) {
                 laikas = textas.getJSONObject(x).getString("time").toString();
@@ -67,7 +63,7 @@ public class graph_adapter {
                 b = Float.parseFloat(textas.getJSONObject(x).getString("close").toString());
                 series.appendData(new DataPoint(x, b), true, 30);
             }
-
+        //X IR Y ASYS (LABELIAI)
             graph.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter() {
                 @Override
                 public String formatLabel(double value, boolean isValueX) {
@@ -85,6 +81,7 @@ public class graph_adapter {
             });
             //testas.setText(a);
 
+        //TEKSTAS
             series.setOnDataPointTapListener(new OnDataPointTapListener() {
                 @Override
                 public void onTap(Series series, DataPointInterface dataPoint) {
@@ -92,13 +89,14 @@ public class graph_adapter {
                 }
             });
 
+        //SPALVOS
             series.setColor(Color.parseColor("#f7931a"));
             series.setThickness(10);
             series.setDrawBackground(true);
             series.setBackgroundColor(Color.parseColor("#fcd19c"));
 
 
-            //xzn kazka pagrazina???
+        //xzn kazka pagrazina???
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(5);
@@ -114,6 +112,7 @@ public class graph_adapter {
             //graph.getViewport().setYAxisBoundsManual(true);
             //graph.getViewport().setMinY(textas.);
             //graph.getViewport().setMaxY(12000);
+        //SCALABLE
             graph.getViewport().setScalable(true);
             graph.addSeries(series);
 

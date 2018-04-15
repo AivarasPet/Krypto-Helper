@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/DarkAppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+        >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,11 +28,26 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
+    <!-- MONEY -->
         <activity android:name=".MoneyActivity" />
-        <activity android:name=".OptionsActivity" />
+
+    <!-- GRAPH -->
+        <activity android:name=".GraphActivity" />
+
+    <!-- NEWS
+        <activity android:name=".NewsActivity" /> -->
+
+    <!-- OPTIONS -->
+        <activity
+            android:name=".OptionsActivity"
+            android:screenOrientation="portrait"
+            />
+
+    <!-- INFO
+        <activity android:name=".InfoActivity" /> -->
+
         <activity android:name=".currency_everything" />
-        <activity android:name=".GraphActivity"></activity>
+
     </application>
 
 </manifest>
