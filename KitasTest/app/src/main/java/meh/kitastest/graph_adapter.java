@@ -28,11 +28,14 @@ public class graph_adapter {
 
 
 
-    TextView txt;
+    TextView txt, datosTxt;
     public GraphView graph;
     Context context;
+    public String pav="", spalva="";
+    public int mode;// 0 monthly, 1 hourly
 
     public void run(String url) {
+        graph.removeAllSeries();
         data_download dl = new data_download(new data_download.AsyncCallback() {
             @Override
             public void gavauData(String result) {
@@ -63,7 +66,8 @@ public class graph_adapter {
                 laikas = textas.getJSONObject(x).getString("time").toString();
                 l = Integer.parseInt(laikas);
                 date = new java.util.Date(l*1000L);
-                diena[x] = (String) android.text.format.DateFormat.format("MM/dd",  date);
+                if(mode==0) diena[x] = (String) android.text.format.DateFormat.format("MM/dd",  date);
+                else diena[x] = (String)  android.text.format.DateFormat.format("kk",  date);
                 b = Float.parseFloat(textas.getJSONObject(x).getString("close").toString());
                 series.appendData(new DataPoint(x, b), true, 30);
             }
@@ -75,7 +79,7 @@ public class graph_adapter {
                         // show  x values
                         //return diena[Integer.parseInt(""+value)];
                         int x = (int ) value;
-                        Log.d("CRash", x+" "+value);
+                        //Log.d("CRash", x+" "+value);
                         return diena[x];
                     } else {
                         // show  y values
@@ -89,24 +93,25 @@ public class graph_adapter {
                 @Override
                 public void onTap(Series series, DataPointInterface dataPoint) {
                     txt.setText("$"+dataPoint.getY());
+                    datosTxt.setText(dataPoint.getX()+"");
                 }
             });
 
-            series.setColor(Color.parseColor("#f7931a"));
+            series.setColor(Color.parseColor(spalva));
             series.setThickness(10);
-            series.setDrawBackground(true);
-            series.setBackgroundColor(Color.parseColor("#fcd19c"));
+            //series.setDrawBackground(true);
+            //series.setBackgroundColor(Color.parseColor("#fcd19c"));
 
 
             //xzn kazka pagrazina???
-            Paint paint = new Paint();
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(5);
-            paint.setPathEffect(new DashPathEffect(new float[]{18, 5}, 0));
-            series.setCustomPaint(paint);
+            //Paint paint = new Paint();
+            //paint.setStyle(Paint.Style.STROKE);
+            //paint.setStrokeWidth(5);
+            //paint.setPathEffect(new DashPathEffect(new float[]{18, 5}, 0));
+            //series.setCustomPaint(paint);
 
 
-            graph.setTitle("BTC");
+            graph.setTitle(pav);
             graph.getViewport().setXAxisBoundsManual(true);
             graph.getViewport().setMinX(20);
             graph.getViewport().setMaxX(30);
@@ -114,7 +119,8 @@ public class graph_adapter {
             //graph.getViewport().setYAxisBoundsManual(true);
             //graph.getViewport().setMinY(textas.);
             //graph.getViewport().setMaxY(12000);
-            graph.getViewport().setScalable(true);
+            //graph.getViewport().setScalable(true);
+            graph.getViewport().setScrollable(true);
             graph.addSeries(series);
 
         } catch (JSONException e) {
