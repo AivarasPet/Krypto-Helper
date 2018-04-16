@@ -26,11 +26,25 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".MoneyActivity" />
-        <activity android:name=".OptionsActivity" />
-        <activity android:name=".currency_everything" />
+        <!-- GRAPH -->
         <activity android:name=".GraphActivity" />
+
+        <!-- MONEY -->
+        <activity android:name=".MoneyActivity" />
+        <activity android:name=".currency_everything"/>
+
+        <!-- NEWS  -->
         <activity android:name=".NewsActivity" />
+
+        <!-- OPTIONS -->
+        <activity
+            android:name=".OptionsActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <!-- INFO
+            <activity android:name=".InfoActivity" /> -->
+
         <activity android:name=".WebsiteActivity"></activity>
     </application>
 

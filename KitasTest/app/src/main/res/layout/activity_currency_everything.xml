@@ -5,33 +5,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".currency_everything">
+    getResources().getString(R.string)
 
     <TextView
         android:id="@+id/nameInDetailed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="208dp" />
+        app:layout_constraintTop_toBottomOf="@+id/imageInDetailed" />
 
     <ImageView
         android:id="@+id/imageInDetailed"
-        android:layout_width="91dp"
+        android:layout_width="match_parent"
         android:layout_height="145dp"
-        app:srcCompat="@drawable/btc"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="2dp" />
+        android:layout_marginTop="60dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/btc" />
 
     <TextView
         android:id="@+id/trumpinysInDetailed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="147dp" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameInDetailed" />
+
+    <TextView
+        android:id="@+id/priceInDetailed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        android:background="?android:colorAccent"
+        app:layout_constraintTop_toBottomOf="@+id/current_price"
+        tools:layout_editor_absoluteX="76dp" />
+
+    <TextView
+        android:id="@+id/changeInDetailed"
+        android:layout_width="wrap_content"
+        android:background="?android:colorAccent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="241dp"
+        tools:layout_editor_absoluteY="370dp" />                                            <!--KAXZKUR SITAM FAILE KLAIDA -->
+
+    <TextView
+        android:id="@+id/current_price"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="60dp"
+        android:background="?android:colorAccent"
+        android:text="@string/price_usd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trumpinysInDetailed" />
+
+    <TextView
+        android:id="@+id/percent_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="50dp"
+        android:background="?android:colorAccent"
+        android:text="@string/percent_change"
+        app:layout_constraintBottom_toTopOf="@+id/changeInDetailed"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width=""
+        android:layout_height="200dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="284dp"
+        android:elevation="-1dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorAccentDark" />
 </android.support.constraint.ConstraintLayout>

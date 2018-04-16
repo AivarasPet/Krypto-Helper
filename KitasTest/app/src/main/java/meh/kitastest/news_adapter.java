@@ -29,7 +29,7 @@ public class news_adapter extends BaseAdapter {
     @Override
     public int getCount() {
         //Log.d("buuuum", textas.length()+"");
-        return 10;//textas.length();
+        return 60;//textas.length();
     }
 
     @Override

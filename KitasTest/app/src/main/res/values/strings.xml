@@ -14,6 +14,10 @@
     <string name="options_name">Options</string>
     <string name="info_name">Info</string>
 
+
+    <string name="price_usd">Current price :</string>
+    <string name="percent_change">24 hour change :</string>
+
     <string-array name="ColorsGraph">
         <item>#f7931a</item>
         <item>#343535</item>

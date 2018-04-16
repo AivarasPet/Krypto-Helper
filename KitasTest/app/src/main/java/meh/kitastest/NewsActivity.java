@@ -10,12 +10,13 @@ import android.widget.ListView;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-public class NewsActivity extends AppCompatActivity {
+public class NewsActivity extends MainActivity {
 
     ListView list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        enableTheme(useLightTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 

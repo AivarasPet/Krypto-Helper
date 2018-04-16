@@ -14,7 +14,7 @@ import org.json.JSONException;
 
 public class currency_everything extends AppCompatActivity {
 
-    TextView pav, trump;
+    TextView pav, trump, kaina, pokyt;
     ImageView img;
 
     Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.litecoin,
@@ -30,6 +30,8 @@ public class currency_everything extends AppCompatActivity {
         pav = (TextView) findViewById(R.id.nameInDetailed);
         trump = (TextView) findViewById(R.id.trumpinysInDetailed);
         img = (ImageView) findViewById(R.id.imageInDetailed);
+        kaina = (TextView) findViewById(R.id.priceInDetailed);
+        pokyt = (TextView) findViewById(R.id.changeInDetailed);
         //txt1.setText(bundle.getString("jsonStr"));
         int lol = bundle.getInt("kelintas");
         handleLook(lol, bundle.getString("jsonStr"));
@@ -44,6 +46,8 @@ public class currency_everything extends AppCompatActivity {
             trump.setText(textas.getJSONObject(position).getString("symbol").toString());
             pav.setText(textas.getJSONObject(position).getString("name").toString());
             img.setImageResource(imgid[position]);
+            kaina.setText(textas.getJSONObject(position).getString("price_usd"));
+            pokyt.setText(textas.getJSONObject(position).getString("percent_change_24h"));
 
         } catch (JSONException e) {
             e.printStackTrace();
