@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -50,24 +51,24 @@ public class graph_adapter {
     private void toliau(String result) {
         try {
             JSONObject obj = new JSONObject(result);
-            JSONArray textas = obj.getJSONArray("Data");
+            final JSONArray textas = obj.getJSONArray("Data");
             //Log.d("myTag", textas.getJSONObject(0).getString("symbol").toString());
             //Log.d("Log.d", textas.length()+"");
-            String laikas;
+            final String[] laikas = new String[1];
 
             float b;
-            int l;
-            Date date;
+            final int[] l = new int[1];
+            final Date[] date = new Date[1];
             final String[] diena = new String[32];
 
 
             LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
             for(int x=0; x<30; x++) {
-                laikas = textas.getJSONObject(x).getString("time").toString();
-                l = Integer.parseInt(laikas);
-                date = new java.util.Date(l*1000L);
-                if(mode==0) diena[x] = (String) android.text.format.DateFormat.format("MM/dd",  date);
-                else diena[x] = (String)  android.text.format.DateFormat.format("kk",  date);
+                laikas[0] = textas.getJSONObject(x).getString("time").toString();
+                l[0] = Integer.parseInt(laikas[0]);
+                date[0] = new java.util.Date(l[0] *1000L);
+                if(mode==0) diena[x] = (String) android.text.format.DateFormat.format("MM/dd", date[0]);
+                else diena[x] = (String)  android.text.format.DateFormat.format("kk", date[0]);
                 b = Float.parseFloat(textas.getJSONObject(x).getString("close").toString());
                 series.appendData(new DataPoint(x, b), true, 30);
             }
@@ -80,7 +81,8 @@ public class graph_adapter {
                         //return diena[Integer.parseInt(""+value)];
                         int x = (int ) value;
                         //Log.d("CRash", x+" "+value);
-                        return diena[x];
+                        if(value%2==0) return diena[x];
+                        else return null;
                     } else {
                         // show  y values
                         return super.formatLabel(value, isValueX)+"$";
@@ -92,16 +94,25 @@ public class graph_adapter {
             series.setOnDataPointTapListener(new OnDataPointTapListener() {
                 @Override
                 public void onTap(Series series, DataPointInterface dataPoint) {
-                    txt.setText("$"+dataPoint.getY());
-                    datosTxt.setText(dataPoint.getX()+"");
+                    int kaina = (int) dataPoint.getY();
+                    txt.setText("$"+kaina);
+                    int x = (int) dataPoint.getX();
+                    try {
+                        laikas[0] = textas.getJSONObject(x).getString("time").toString();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    l[0] = Integer.parseInt(laikas[0]);
+                    date[0] = new java.util.Date(l[0] *1000L);
+                    if(mode==0) datosTxt.setText(android.text.format.DateFormat.format("MM/dd", date[0]));
+                    else datosTxt.setText(android.text.format.DateFormat.format("kk", date[0])+"hr");
                 }
             });
 
             series.setColor(Color.parseColor(spalva));
             series.setThickness(10);
             //series.setDrawBackground(true);
-            //series.setBackgroundColor(Color.parseColor("#fcd19c"));
-
+            //series.setBackgroundColor(Color.parseColor("#fcd19c"))
 
             //xzn kazka pagrazina???
             //Paint paint = new Paint();
@@ -110,11 +121,18 @@ public class graph_adapter {
             //paint.setPathEffect(new DashPathEffect(new float[]{18, 5}, 0));
             //series.setCustomPaint(paint);
 
+            graph.getGridLabelRenderer().setTextSize(38f);
+            //setHorizontalAxisTitle
+            //series.setDataPointsRadius(1f);
 
+            //graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.BOTH);
+            graph.getGridLabelRenderer().setNumHorizontalLabels(10);
+
+            graph.getGridLabelRenderer().setHorizontalLabelsAngle(10);
             graph.setTitle(pav);
             graph.getViewport().setXAxisBoundsManual(true);
             graph.getViewport().setMinX(20);
-            graph.getViewport().setMaxX(30);
+            graph.getViewport().setMaxX(29);
 
             //graph.getViewport().setYAxisBoundsManual(true);
             //graph.getViewport().setMinY(textas.);

@@ -108,9 +108,9 @@ public class GraphActivity extends AppCompatActivity{
         {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(checkedId == 2131296375) mode = 1;
+                if(checkedId == R.id.radioButton2) mode = 1;
                 else mode = 0;
-                //Log.d("bam", mode+"");
+                Log.d("bam", mode+"");
                 createClass(spinner.getSelectedItemPosition());
             }
         });
