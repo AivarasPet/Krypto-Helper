@@ -31,21 +31,23 @@
 
         <!-- MONEY -->
         <activity android:name=".MoneyActivity" />
-        <activity android:name=".currency_everything"/>
+        <activity android:name=".currency_everything" />
 
-        <!-- NEWS  -->
+        <!-- NEWS -->
         <activity android:name=".NewsActivity" />
 
         <!-- OPTIONS -->
         <activity
             android:name=".OptionsActivity"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
 
-        <!-- INFO
-            <activity android:name=".InfoActivity" /> -->
+        <!--
+             INFO
+            <activity android:name=".InfoActivity" />
+        -->
 
-        <activity android:name=".WebsiteActivity"></activity>
+        <activity android:name=".WebsiteActivity" />
+        <activity android:name=".InfoActivity"></activity>
     </application>
 
 </manifest>

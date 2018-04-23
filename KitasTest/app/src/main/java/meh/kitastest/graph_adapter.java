@@ -106,6 +106,10 @@ public class graph_adapter {
                     date[0] = new java.util.Date(l[0] *1000L);
                     if(mode==0) datosTxt.setText(android.text.format.DateFormat.format("MM/dd", date[0]));
                     else datosTxt.setText(android.text.format.DateFormat.format("kk", date[0])+"hr");
+
+                    Log.d("dx"," veik");
+
+
                 }
             });
 
