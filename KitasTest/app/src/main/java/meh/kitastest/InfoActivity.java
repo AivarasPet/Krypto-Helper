@@ -7,21 +7,25 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
-public class InfoActivity extends AppCompatActivity {
+public class InfoActivity extends MainActivity {
 
     Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.litecoin,
             R.drawable.eos, R.drawable.stellar, R.drawable.cardano, R.drawable.neo,
             R.drawable.iota };
 
     ImageView img;
+    TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        enableTheme(useLightTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
         img = (ImageView) findViewById(R.id.infoImage);
+        text = (TextView) findViewById(R.id.info_text);
 
         final Spinner spinner = (Spinner) findViewById(R.id.infoSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.cryptoNames, android.R.layout.simple_spinner_item);
@@ -37,6 +41,7 @@ public class InfoActivity extends AppCompatActivity {
                 //Toast.makeText(getApplicationContext(), position, Toast.LENGTH_LONG);
                 //Log.d("D", position+"");
                 img.setImageResource(imgid[position]);
+                text.setText(getResources().getStringArray(R.array.Info)[position]);
             }
 
             @Override

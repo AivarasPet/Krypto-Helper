@@ -18,6 +18,25 @@
     <string name="price_usd">Current price :</string>
     <string name="percent_change">24 hour change :</string>
 
+
+    <!--  INFO (LONG)  -->
+    <string-array name="Info">
+
+        <item name="bitcoin_info"> Bitcoin is a cryptocurrency and worldwide payment system. It is the first decentralized digital currency, as the system works without a central bank or single administrator. \nThe network is peer-to-peer and transactions take place between users directly, without an intermediary. These transactions are verified by network nodes through the use of cryptography and recorded in a public distributed ledger called a blockchain. \nBitcoin was invented by an unknown person or group of people under the name Satoshi Nakamoto and released as open-source software in 2009. \nBitcoins are created as a reward for a process known as mining. They can be exchanged for other currencies, products, and services. As of February 2015, over 100,000 merchants and vendors accepted bitcoin as payment. \nResearch produced by the University of Cambridge estimates that in 2017, there were 2.9 to 5.8 million unique users using a cryptocurrency wallet, most of them using bitcoin. </item>
+        <item name="ethereum_info">eth</item>
+        <item name="ripple_info">rip</item>
+        <item name="bitcoincash_info">btcash</item>
+        <item name="litecoin_info">ltc</item>
+        <item name="eos_info">eos</item>
+        <item name="stellar_info">stel</item>
+        <item name="cardano_info">card</item>
+        <item name="neo_info">neo</item>
+        <item name="iota_info">iota</item>
+
+
+    </string-array>
+
+
     <string-array name="ColorsGraph">
         <item>#f7931a</item>
         <item>#343535</item>

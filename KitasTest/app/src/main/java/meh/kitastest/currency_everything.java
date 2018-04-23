@@ -12,7 +12,7 @@ import org.json.JSONException;
 
 
 
-public class currency_everything extends AppCompatActivity {
+public class currency_everything extends MainActivity {
 
     TextView pav, trump, kaina, pokyt;
     ImageView img;
@@ -23,6 +23,7 @@ public class currency_everything extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        enableTheme(useLightTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency_everything);
 
@@ -45,9 +46,9 @@ public class currency_everything extends AppCompatActivity {
             JSONArray textas = new JSONArray(json);
             trump.setText(textas.getJSONObject(position).getString("symbol").toString());
             pav.setText(textas.getJSONObject(position).getString("name").toString());
+            kaina.setText(textas.getJSONObject(position).getString("price_usd").toString());
+            pokyt.setText(textas.getJSONObject(position).getString("percent_change_24h").toString());
             img.setImageResource(imgid[position]);
-            kaina.setText(textas.getJSONObject(position).getString("price_usd"));
-            pokyt.setText(textas.getJSONObject(position).getString("percent_change_24h"));
 
         } catch (JSONException e) {
             e.printStackTrace();
