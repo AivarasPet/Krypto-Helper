@@ -1,47 +1,28 @@
 package meh.kitastest;
 
-import android.animation.ArgbEvaluator;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.ColorSpace;
-import android.graphics.DashPathEffect;
-import android.graphics.Paint;
-import android.hardware.camera2.params.RggbChannelVector;
-import android.icu.text.DateFormat;
-import android.os.Debug;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.DataPointInterface;
-import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.OnDataPointTapListener;
-import com.jjoe64.graphview.series.Series;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Date;
+import javax.net.ssl.SSLPeerUnverifiedException;
 
 
-public class GraphActivity extends MainActivity{
+public class GraphActivity extends AppCompatActivity{
 
-    TextView testas, datosTxt;
-    GraphView graph;
+    TextView kaina, datosTxt;
+    GraphView graph, graph1, graph2;
     RadioGroup radioGroup;
+    Button compareBtn, exitBtn;
+    Spinner spinner1, spinner2;
     private int mode=0;
 
     String[] url = {
@@ -73,28 +54,64 @@ public class GraphActivity extends MainActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        enableTheme(useLightTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 
-        testas = (TextView) findViewById(R.id.TestInGraph);
+        kaina = (TextView) findViewById(R.id.TestInGraph);
         datosTxt = (TextView) findViewById(R.id.DateInGraph);
-        graph = (GraphView) findViewById(R.id.graph);
+        graph1 = (GraphView) findViewById(R.id.graph1);
+        compareBtn = (Button) findViewById(R.id.CompareBtn);
+        compareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                compareWindow();
+            }
+        });
 
-        final Spinner spinner = (Spinner) findViewById(R.id.dropDown);
+        DefineStuff(1); //kai normalus langas
+
+        //createClass(0, graph); //pradziai
+
+
+
+
+    }
+
+    private void compareWindow() { //viskas comparui
+        setContentView(R.layout.compare_graph);
+        graph1 = (GraphView) findViewById(R.id.graph1);
+        graph2 = (GraphView) findViewById(R.id.graph2);
+        kaina = (TextView) findViewById(R.id.TestInGraph);
+        datosTxt = (TextView) findViewById(R.id.DateInGraph);
+        exitBtn = (Button) findViewById(R.id.exitCompareBtn);
+        //createClass(0, graph1);
+        //createClass(1, graph2);
+
+        DefineStuff(2); //kai compare ijungtas
+
+
+        exitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(getIntent());
+            }
+        });
+    }
+
+    private void DefineStuff(final int kiekis) {
+
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.cryptoNames, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1 = (Spinner) findViewById(R.id.CmpDrop1);
+        spinner1.setAdapter(adapter);
 
-// Apply the adapter to the spinner
-         spinner.setAdapter(adapter);
-         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinner1.setAdapter(adapter);
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-               //Toast.makeText(getApplicationContext(), position, Toast.LENGTH_LONG);
-                //Log.d("D", position+"");
-                createClass(position);
+                createClass(position, graph1);
             }
 
             @Override
@@ -104,6 +121,30 @@ public class GraphActivity extends MainActivity{
 
         });
 
+        if(kiekis == 2) { // jei compare ijungtas
+            spinner2 = (Spinner) findViewById(R.id.CmpDrop2);
+            spinner2.setAdapter(adapter);
+            spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    createClass(position, graph2);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parentView) {
+                    // your code here
+                }
+            });
+
+        }
+
+// Apply the adapter to the spinner
+
+
+
+
+
+
         radioGroup = (RadioGroup) findViewById(R.id.Rbuttons);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -111,22 +152,18 @@ public class GraphActivity extends MainActivity{
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(checkedId == R.id.radioButton2) mode = 1;
                 else mode = 0;
-                Log.d("bam", mode+"");
-                createClass(spinner.getSelectedItemPosition());
+                //Log.d("bam", mode+"");
+                createClass(spinner1.getSelectedItemPosition(), graph1);
+                if(kiekis==2) createClass(spinner2.getSelectedItemPosition(), graph2);
             }
         });
 
-        createClass(0);
-
-
-
-
     }
 
-    private void createClass(int position) {
+    private void createClass(int position, GraphView grafik) {
         graph_adapter naujas = new graph_adapter();
-        naujas.graph = graph;
-        naujas.txt = testas;
+        naujas.graph = grafik;
+        naujas.txt = kaina;
         naujas.datosTxt = datosTxt;
         naujas.pav = getResources().getStringArray(R.array.cryptoNames)[position];
         naujas.spalva = getResources().getStringArray(R.array.ColorsGraph)[position];
