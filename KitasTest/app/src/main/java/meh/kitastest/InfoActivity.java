@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class InfoActivity extends MainActivity {
 
     Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.litecoin,
-            R.drawable.eos, R.drawable.stellar, R.drawable.cardano, R.drawable.neo,
+            R.drawable.eos, R.drawable.cardano, R.drawable.stellar, R.drawable.neo,
             R.drawable.iota };
 
     ImageView img;

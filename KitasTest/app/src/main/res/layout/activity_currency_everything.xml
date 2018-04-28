@@ -7,133 +7,195 @@
     tools:context=".currency_everything">
     getResources().getString(R.string)
 
-    <TextView
-        android:id="@+id/nameInDetailed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageInDetailed" />
-
-    <ImageView
-        android:id="@+id/imageInDetailed"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="145dp"
-        android:layout_marginTop="28dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/btc" />
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/trumpinysInDetailed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameInDetailed" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/priceInDetailed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:background="?android:colorAccent"
-        android:textColor="#fff"
-        android:text="TextView"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toStartOf="@+id/mid_line"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            <ImageView
+                android:id="@+id/imageInDetailed"
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/btc" />
 
-    <TextView
-        android:id="@+id/changeInDetailed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:background="?android:colorAccent"
-        android:textColor="#fff"
-        android:text="TextView"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/mid_line"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />                                            <!--KAXZKUR SITAM FAILE KLAIDA -->
+            <TextView
+                android:id="@+id/nameInDetailed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageInDetailed" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="16dp"
-        android:elevation="-1dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trumpinysInDetailed"
-        app:srcCompat="?android:colorAccent" />
+            <TextView
+                android:id="@+id/trumpinysInDetailed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textAlignment="center"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameInDetailed" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:textColor="#fff"
-        android:layout_marginTop="30dp"
-        android:background="?android:colorAccent"
-        android:text="Current price :"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/mid_line"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp">
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="30dp"
-        android:background="?android:colorAccent"
-        android:textColor="#fff"
-        android:text="Current change :"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/mid_line"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+                <ImageView
+                    android:id="@+id/mid_line"
+                    android:layout_width="3dp"
+                    android:layout_height="120dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/imageView2"
+                    app:srcCompat="?android:textColor" />
 
-    <ImageView
-        android:id="@+id/mid_line"
-        android:layout_width="2dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:srcCompat="?android:textColor" />
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="150dp"
+                    android:layout_height="26dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:background="?android:colorAccent"
+                    android:text="Current price :"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                    app:layout_constraintStart_toEndOf="@+id/mid_line"
+                    app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
-    <TextView
-        android:id="@+id/details"
-        android:layout_width="95dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        android:text="Details"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="167dp"
+                    android:layout_height="26dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:background="?android:colorAccent"
+                    android:text="Current change :"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/mid_line"
+                    app:layout_constraintStart_toStartOf="@+id/imageView2"
+                    app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+                <TextView
+                    android:id="@+id/changeInDetailed"
+                    android:layout_width="160dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="?android:colorAccent"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toStartOf="@+id/mid_line"
+                    app:layout_constraintStart_toStartOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                <TextView
+                    android:id="@+id/priceInDetailed"
+                    android:layout_width="160dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:background="?android:colorAccent"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                    app:layout_constraintStart_toEndOf="@+id/mid_line"
+                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="16dp"
+                    android:elevation="-1dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/trumpinysInDetailed"
+                    app:srcCompat="?android:colorAccent" />
+            </android.support.constraint.ConstraintLayout>
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/graphInDetailed"
+                android:layout_width="wrap_content"
+                android:layout_height="200dip"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="30dp"
+                android:background="#fff"
+                android:onClick="onGraphClick"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/details"
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:text="Details"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+            <TextView
+                android:id="@+id/infoInDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:onClick="onClickDetails"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--KAXZKUR SITAM FAILE KLAIDA -->
+
 </android.support.constraint.ConstraintLayout>
+

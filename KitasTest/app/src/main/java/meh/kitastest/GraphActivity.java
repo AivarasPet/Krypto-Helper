@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -16,9 +17,14 @@ import com.jjoe64.graphview.GraphView;
 import javax.net.ssl.SSLPeerUnverifiedException;
 
 
-public class GraphActivity extends AppCompatActivity{
+public class GraphActivity extends MainActivity{
+
+    Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.litecoin,
+            R.drawable.eos, R.drawable.stellar, R.drawable.cardano, R.drawable.neo,
+            R.drawable.iota };
 
     TextView kaina, datosTxt;
+    ImageView img;
     GraphView graph, graph1, graph2;
     RadioGroup radioGroup;
     Button compareBtn, exitBtn;
@@ -54,9 +60,11 @@ public class GraphActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        enableTheme(useLightTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 
+        img = (ImageView) findViewById(R.id.graphImage);
         kaina = (TextView) findViewById(R.id.TestInGraph);
         datosTxt = (TextView) findViewById(R.id.DateInGraph);
         graph1 = (GraphView) findViewById(R.id.graph1);
@@ -76,6 +84,7 @@ public class GraphActivity extends AppCompatActivity{
 
 
     }
+
 
     private void compareWindow() { //viskas comparui
         setContentView(R.layout.compare_graph);
@@ -112,6 +121,7 @@ public class GraphActivity extends AppCompatActivity{
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 createClass(position, graph1);
+                img.setImageResource(imgid[position]);
             }
 
             @Override
@@ -120,6 +130,12 @@ public class GraphActivity extends AppCompatActivity{
             }
 
         });
+
+        Bundle bundle = getIntent().getExtras();
+        if(getIntent().hasExtra("kelintas")) {
+            int lol = bundle.getInt("kelintas");
+            spinner1.setSelection(lol);
+                    }
 
         if(kiekis == 2) { // jei compare ijungtas
             spinner2 = (Spinner) findViewById(R.id.CmpDrop2);

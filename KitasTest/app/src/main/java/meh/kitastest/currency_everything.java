@@ -1,10 +1,17 @@
 package meh.kitastest;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,11 +22,26 @@ import org.json.JSONException;
 public class currency_everything extends MainActivity {
 
     TextView pav, trump, kaina, pokyt;
+    GraphView graph;
     ImageView img;
+    private int kelintas;
 
     Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.litecoin,
             R.drawable.eos, R.drawable.stellar, R.drawable.cardano, R.drawable.neo,
             R.drawable.iota };
+
+    String[] url = {
+            "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+            "https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+            "https://min-api.cryptocompare.com/data/histoday?fsym=XRP&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+            "https://min-api.cryptocompare.com/data/histoday?fsym=BCH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+            "https://min-api.cryptocompare.com/data/histoday?fsym=LTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+            "https://min-api.cryptocompare.com/data/histoday?fsym=EOS&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+            "https://min-api.cryptocompare.com/data/histoday?fsym=ADA&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+            "https://min-api.cryptocompare.com/data/histoday?fsym=XLM&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+            "https://min-api.cryptocompare.com/data/histoday?fsym=NEO&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+            "https://min-api.cryptocompare.com/data/histoday?fsym=IOTA&tsym=USD&limit=30&aggregate=1&e=CCCAGG"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +55,12 @@ public class currency_everything extends MainActivity {
         img = (ImageView) findViewById(R.id.imageInDetailed);
         kaina = (TextView) findViewById(R.id.priceInDetailed);
         pokyt = (TextView) findViewById(R.id.changeInDetailed);
+        graph = (GraphView) findViewById(R.id.graphInDetailed);
         //txt1.setText(bundle.getString("jsonStr"));
-        int lol = bundle.getInt("kelintas");
-        handleLook(lol, bundle.getString("jsonStr"));
+        kelintas = bundle.getInt("kelintas");
+        handleLook(kelintas, bundle.getString("jsonStr"));
+
+
 
 
     }
@@ -53,7 +78,23 @@ public class currency_everything extends MainActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+
+
+
+    }
+
+    public void onGraphClick(View v) {
+        Intent intent = new Intent(getApplicationContext(), GraphActivity.class);
+        intent.putExtra("kelintas", kelintas);
+        startActivity(intent);
+    }
+
+    public void onClickDetails(View v) {
+
     }
 
 
 }
+
+
