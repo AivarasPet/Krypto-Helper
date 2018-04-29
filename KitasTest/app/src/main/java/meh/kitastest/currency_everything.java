@@ -66,7 +66,7 @@ public class currency_everything extends MainActivity {
 
         createClass(kelintas, graph); //grafika
         String infoPre = getResources().getStringArray(R.array.Info)[kelintas];
-        infoPre = infoPre.substring(0, 200)+"...(click for more)";
+        infoPre = infoPre.substring(0, 200)+" ...";
         info.setText(infoPre);
 
     }

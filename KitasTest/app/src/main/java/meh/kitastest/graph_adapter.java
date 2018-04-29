@@ -115,8 +115,13 @@ public class graph_adapter {
                         Log.d("dx", " veik");
 
                         graph.removeAllSeries();
-                        LineGraphSeries <DataPoint> kursorius;
-                        
+                        LineGraphSeries <DataPoint> kursorius =  new LineGraphSeries<>();
+                        double kiekPridet = (series.getHighestValueY()-series.getLowestValueY())/10;
+                        kursorius.appendData(new DataPoint(x, dataPoint.getY()-kiekPridet), true, 2);
+                        kursorius.appendData(new DataPoint(x, dataPoint.getY()+kiekPridet), true, 2);
+                        kursorius.setColor(Color.parseColor("#002080"));
+                        kursorius.setThickness(20);
+                        graph.addSeries(kursorius);
                         graph.addSeries(series);
 
                     }
@@ -145,3 +150,5 @@ public class graph_adapter {
         }
     }
 }
+
+

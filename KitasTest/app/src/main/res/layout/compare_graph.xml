@@ -42,32 +42,29 @@
                 app:layout_constraintTop_toBottomOf="@+id/first" />
 
             <TextView
-                android:id="@+id/DateInGraph"
-                android:layout_width="0dp"
-                android:layout_height="20dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/TestInGraph"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:id="@+id/TestInGraph"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                android:textAlignment="textEnd"
+                app:layout_constraintEnd_toStartOf="@+id/DateInGraph"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/graph2" />
 
             <TextView
-                android:id="@+id/TestInGraph"
-                android:layout_width="0dp"
-                android:layout_height="14dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
+                android:id="@+id/DateInGraph"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="124dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginTop="20dp"
+                android:textAlignment="textStart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/TestInGraph"
+                app:layout_constraintTop_toBottomOf="@+id/graph2" />
 
             <com.jjoe64.graphview.GraphView
                 android:id="@+id/graph2"
@@ -98,8 +95,8 @@
             <RadioGroup
                 android:id="@+id/Rbuttons"
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/graph2">
 

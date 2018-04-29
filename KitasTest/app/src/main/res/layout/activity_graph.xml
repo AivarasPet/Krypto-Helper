@@ -7,35 +7,31 @@
     tools:context="meh.kitastest.GraphActivity">
 
     <TextView
-        android:id="@+id/DateInGraph"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:layout_marginBottom="16dp"
+        android:id="@+id/TestInGraph"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/TestInGraph"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toStartOf="@+id/DateInGraph"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/graph"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/graph1" />
 
     <TextView
-        android:id="@+id/TestInGraph"
-        android:layout_width="0dp"
-        android:layout_height="14dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:id="@+id/DateInGraph"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="16dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/TestInGraph"
+        app:layout_constraintTop_toBottomOf="@+id/graph1" />
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graph1"
@@ -57,9 +53,9 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginBottom="72dp"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/black_ops_one"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -72,8 +68,8 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="40dp"
             android:layout_weight="1"
-            android:fontFamily="@font/black_ops_one"
             android:checked="true"
+            android:fontFamily="@font/black_ops_one"
             android:text="Monthly"
             android:textColor="#fff"
             android:textSize="20dp" />
@@ -81,13 +77,13 @@
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="match_parent"
-            android:textColor="#fff"
-            android:fontFamily="@font/black_ops_one"
-            android:layout_marginLeft="45dp"
             android:layout_height="match_parent"
-            android:textSize="20dp"
+            android:layout_marginLeft="45dp"
             android:layout_weight="1"
-            android:text="Hourly" />
+            android:fontFamily="@font/black_ops_one"
+            android:text="Hourly"
+            android:textColor="#fff"
+            android:textSize="20dp" />
 
     </RadioGroup>
 
