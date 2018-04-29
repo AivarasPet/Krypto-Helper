@@ -34,6 +34,8 @@ public class graph_adapter {
     Context context;
     public String pav="", spalva="";
     public int mode;// 0 monthly, 1 hourly
+    public  boolean isPreview;
+    LineGraphSeries <DataPoint> series;
 
     public void run(String url) {
         graph.removeAllSeries();
@@ -62,7 +64,7 @@ public class graph_adapter {
             final String[] diena = new String[32];
 
 
-            LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
+            series = new LineGraphSeries<>();//LineGraphSeries<DataPoint>
             for(int x=0; x<30; x++) {
                 laikas[0] = textas.getJSONObject(x).getString("time").toString();
                 l[0] = Integer.parseInt(laikas[0]);
@@ -91,57 +93,49 @@ public class graph_adapter {
             });
             //testas.setText(a);
 
-            series.setOnDataPointTapListener(new OnDataPointTapListener() {
-                @Override
-                public void onTap(Series series, DataPointInterface dataPoint) {
-                    int kaina = (int) dataPoint.getY();
-                    txt.setText("$"+kaina);
-                    int x = (int) dataPoint.getX();
-                    try {
-                        laikas[0] = textas.getJSONObject(x).getString("time").toString();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+            if(!isPreview) {
+                series.setOnDataPointTapListener(new OnDataPointTapListener() {
+                    @Override
+                    public void onTap(Series series, DataPointInterface dataPoint) {
+                        int kaina = (int) dataPoint.getY();
+                        txt.setText("$" + kaina);
+                        int x = (int) dataPoint.getX();
+                        try {
+                            laikas[0] = textas.getJSONObject(x).getString("time").toString();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        l[0] = Integer.parseInt(laikas[0]);
+                        date[0] = new java.util.Date(l[0] * 1000L);
+                        if (mode == 0)
+                            datosTxt.setText(android.text.format.DateFormat.format("MM/dd", date[0]));
+                        else
+                            datosTxt.setText(android.text.format.DateFormat.format("kk", date[0]) + "hr");
+
+                        Log.d("dx", " veik");
+
+                        graph.removeAllSeries();
+                        LineGraphSeries <DataPoint> kursorius;
+                        
+                        graph.addSeries(series);
+
                     }
-                    l[0] = Integer.parseInt(laikas[0]);
-                    date[0] = new java.util.Date(l[0] *1000L);
-                    if(mode==0) datosTxt.setText(android.text.format.DateFormat.format("MM/dd", date[0]));
-                    else datosTxt.setText(android.text.format.DateFormat.format("kk", date[0])+"hr");
-
-                    Log.d("dx"," veik");
-
-
-                }
-            });
+                });
+            }
 
             series.setColor(Color.parseColor(spalva));
             series.setThickness(10);
-            //series.setDrawBackground(true);
-            //series.setBackgroundColor(Color.parseColor("#fcd19c"))
 
-            //xzn kazka pagrazina???
-            //Paint paint = new Paint();
-            //paint.setStyle(Paint.Style.STROKE);
-            //paint.setStrokeWidth(5);
-            //paint.setPathEffect(new DashPathEffect(new float[]{18, 5}, 0));
-            //series.setCustomPaint(paint);
 
             graph.getGridLabelRenderer().setTextSize(38f);
-            //setHorizontalAxisTitle
-            //series.setDataPointsRadius(1f);
-
-            //graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.BOTH);
             graph.getGridLabelRenderer().setNumHorizontalLabels(10);
-
             graph.getGridLabelRenderer().setHorizontalLabelsAngle(10);
             graph.setTitle(pav);
             graph.getViewport().setXAxisBoundsManual(true);
             graph.getViewport().setMinX(20);
             graph.getViewport().setMaxX(29);
 
-            //graph.getViewport().setYAxisBoundsManual(true);
-            //graph.getViewport().setMinY(textas.);
-            //graph.getViewport().setMaxY(12000);
-            //graph.getViewport().setScalable(true);
+
             graph.getViewport().setScrollable(true);
             graph.addSeries(series);
 

@@ -62,10 +62,52 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp">
 
+                <TextView
+                    android:id="@+id/priceInBTC"
+                    android:layout_width="166dp"
+                    android:layout_height="26dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="?android:colorAccent"
+                    android:text="text"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+                <TextView
+                    android:id="@+id/weekChange"
+                    android:layout_width="167dp"
+                    android:layout_height="26dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="?android:colorAccent"
+                    android:text="text"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="150dp"
+                    android:layout_height="26dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:background="?android:colorAccent"
+                    android:text="price in BTC:"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/priceInDetailed" />
+
                 <ImageView
                     android:id="@+id/mid_line"
                     android:layout_width="3dp"
-                    android:layout_height="120dp"
+                    android:layout_height="130dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -79,18 +121,37 @@
                     app:srcCompat="?android:textColor" />
 
                 <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="150dp"
+                    android:layout_height="26dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="?android:colorAccent"
+                    android:text="7 day change:"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/mid_line"
+                    app:layout_constraintStart_toStartOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/changeInDetailed" />
+
+                <TextView
                     android:id="@+id/textView9"
                     android:layout_width="150dp"
                     android:layout_height="26dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="16dp"
                     android:background="?android:colorAccent"
                     android:text="Current price :"
                     android:textAlignment="center"
                     android:textColor="#fff"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@+id/imageView2"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/mid_line"
                     app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
@@ -100,12 +161,13 @@
                     android:layout_height="26dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="16dp"
                     android:background="?android:colorAccent"
                     android:text="Current change :"
                     android:textColor="#fff"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@+id/mid_line"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/imageView2"
                     app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
@@ -115,13 +177,13 @@
                     android:layout_height="36dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="4dp"
                     android:background="?android:colorAccent"
+                    android:gravity="center"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textColor="#fff"
-                    android:gravity="center"
-                    android:textSize="25sp"
+                    android:textSize="22sp"
                     app:layout_constraintEnd_toStartOf="@+id/mid_line"
                     app:layout_constraintStart_toStartOf="@+id/imageView2"
                     app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -132,13 +194,13 @@
                     android:layout_height="36dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center"
+                    android:layout_marginTop="4dp"
                     android:background="?android:colorAccent"
+                    android:gravity="center"
                     android:text="TextView"
                     android:textAlignment="center"
                     android:textColor="#fff"
-                    android:textSize="25sp"
+                    android:textSize="22sp"
                     app:layout_constraintEnd_toEndOf="@+id/imageView2"
                     app:layout_constraintStart_toEndOf="@+id/mid_line"
                     app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -146,10 +208,10 @@
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="150dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="20dp"
                     android:elevation="-1dp"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="parent"

@@ -21,10 +21,10 @@ import org.json.JSONException;
 
 public class currency_everything extends MainActivity {
 
-    TextView pav, trump, kaina, pokyt;
+    TextView pav, trump, kaina, pokyt, info, kainaBTC, pokyt7d;
     GraphView graph;
     ImageView img;
-    private int kelintas;
+    public int kelintas;
 
     Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.litecoin,
             R.drawable.eos, R.drawable.stellar, R.drawable.cardano, R.drawable.neo,
@@ -55,13 +55,19 @@ public class currency_everything extends MainActivity {
         img = (ImageView) findViewById(R.id.imageInDetailed);
         kaina = (TextView) findViewById(R.id.priceInDetailed);
         pokyt = (TextView) findViewById(R.id.changeInDetailed);
+        info = (TextView) findViewById(R.id.infoInDetails);
         graph = (GraphView) findViewById(R.id.graphInDetailed);
+        kainaBTC = (TextView) findViewById(R.id.priceInBTC);
+        pokyt7d = (TextView) findViewById(R.id.weekChange);
         //txt1.setText(bundle.getString("jsonStr"));
         kelintas = bundle.getInt("kelintas");
         handleLook(kelintas, bundle.getString("jsonStr"));
 
 
-
+        createClass(kelintas, graph); //grafika
+        String infoPre = getResources().getStringArray(R.array.Info)[kelintas];
+        infoPre = infoPre.substring(0, 200)+"...(click for more)";
+        info.setText(infoPre);
 
     }
 
@@ -71,8 +77,10 @@ public class currency_everything extends MainActivity {
             JSONArray textas = new JSONArray(json);
             trump.setText(textas.getJSONObject(position).getString("symbol").toString());
             pav.setText(textas.getJSONObject(position).getString("name").toString());
-            kaina.setText(textas.getJSONObject(position).getString("price_usd").toString());
-            pokyt.setText(textas.getJSONObject(position).getString("percent_change_24h").toString());
+            kaina.setText(textas.getJSONObject(position).getString("price_usd").toString()+"$");
+            pokyt.setText(textas.getJSONObject(position).getString("percent_change_24h").toString()+"%");
+            kainaBTC.setText(textas.getJSONObject(position).getString("price_btc").toString());
+            pokyt7d.setText(textas.getJSONObject(position).getString("percent_change_7d").toString()+"%");
             img.setImageResource(imgid[position]);
 
         } catch (JSONException e) {
@@ -91,9 +99,21 @@ public class currency_everything extends MainActivity {
     }
 
     public void onClickDetails(View v) {
-
+        Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
+        intent.putExtra("kelintas", kelintas);
+        startActivity(intent);
     }
 
+    private void createClass(int position, GraphView grafik) {
+        graph_adapter naujas = new graph_adapter();
+        naujas.graph = grafik;
+        naujas.isPreview = true;
+        naujas.pav = getResources().getStringArray(R.array.cryptoNames)[position];
+        naujas.spalva = getResources().getStringArray(R.array.ColorsGraph)[position];
+        naujas.mode = 0;
+        naujas.context = getApplicationContext();
+        naujas.run(url[position]);
+    }
 
 }
 

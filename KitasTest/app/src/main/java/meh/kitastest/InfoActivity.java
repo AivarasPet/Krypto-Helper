@@ -50,5 +50,11 @@ public class InfoActivity extends MainActivity {
             }
 
         });
+
+        Bundle bundle = getIntent().getExtras();
+        if(getIntent().hasExtra("kelintas")) {
+            int lol = bundle.getInt("kelintas");
+            spinner.setSelection(lol);
+        }
     }
 }

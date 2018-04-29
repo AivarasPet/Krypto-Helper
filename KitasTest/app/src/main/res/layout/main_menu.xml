@@ -185,6 +185,7 @@
         android:id="@+id/Version"
         android:layout_width="246dp"
         android:layout_height="20dp"
+        android:layout_marginBottom="2dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="6dp"
         android:fontFamily="serif-monospace"

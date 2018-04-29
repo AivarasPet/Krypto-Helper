@@ -1,7 +1,9 @@
 package meh.kitastest;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -71,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, InfoActivity.class));
             }
         });
+
+        if(isNetworkAvailable(getApplicationContext())) Toast.makeText(getApplicationContext(), "App won't work without Internet Connection!!!", Toast.LENGTH_LONG);
     }
     public boolean usabilityLightTheme() {
         return useLightTheme;
@@ -135,5 +140,10 @@ public class MainActivity extends AppCompatActivity {
         });
         finish();
         startActivity(getIntent());
+    }
+
+    public boolean isNetworkAvailable(Context context) {
+        final ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
     }
 }
