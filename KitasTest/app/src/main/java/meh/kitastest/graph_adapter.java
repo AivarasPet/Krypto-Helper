@@ -137,7 +137,7 @@ public class graph_adapter {
             graph.getGridLabelRenderer().setHorizontalLabelsAngle(10);
             graph.setTitle(pav);
             graph.getViewport().setXAxisBoundsManual(true);
-            graph.getViewport().setMinX(20);
+            graph.getViewport().setMinX(18);
             graph.getViewport().setMaxX(29);
 
 

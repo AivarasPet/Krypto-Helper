@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -25,11 +26,14 @@ public class GraphActivity extends MainActivity{
 
     TextView kaina, datosTxt;
     ImageView img;
-    GraphView graph, graph1, graph2;
+    GraphView graph1, graph2;
     RadioGroup radioGroup;
     Button compareBtn, exitBtn;
     Spinner spinner1, spinner2;
+    SeekBar seekBar;
     private int mode=0;
+    private boolean isCompare=false;
+    public graph_adapter naujas1, naujas2;
 
     String[] url = {
             "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
@@ -93,11 +97,40 @@ public class GraphActivity extends MainActivity{
         kaina = (TextView) findViewById(R.id.TestInGraph);
         datosTxt = (TextView) findViewById(R.id.DateInGraph);
         exitBtn = (Button) findViewById(R.id.exitCompareBtn);
+        seekBar = (SeekBar) findViewById(R.id.seekBar);
         //createClass(0, graph1);
         //createClass(1, graph2);
 
+
         DefineStuff(2); //kai compare ijungtas
 
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                graph1.removeAllSeries();
+                graph2.removeAllSeries();
+                double zymeklis = seekBar.getProgress()/10+6; // 5.5 i kaire ir desine palikt 23.5
+                //zymeklis = (zymeklis - 0) * (23.5 - 5.5) / (18 - 0) + 5.5;
+                Log.d("bam ", ""+zymeklis);
+                graph1.getViewport().setMinX(zymeklis-6);
+                graph1.getViewport().setMaxX(zymeklis+6);
+                graph2.getViewport().setMinX(zymeklis-6);
+                graph2.getViewport().setMaxX(zymeklis+6);
+                graph1.addSeries(naujas1.series);
+                graph2.addSeries(naujas2.series);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         exitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,16 +210,31 @@ public class GraphActivity extends MainActivity{
     }
 
     private void createClass(int position, GraphView grafik) {
-        graph_adapter naujas = new graph_adapter();
-        naujas.graph = grafik;
-        naujas.txt = kaina;
-        naujas.datosTxt = datosTxt;
-        naujas.pav = getResources().getStringArray(R.array.cryptoNames)[position];
-        naujas.spalva = getResources().getStringArray(R.array.ColorsGraph)[position];
-        naujas.mode = mode;
-        naujas.context = getApplicationContext();
-        if (mode == 0)naujas.run(url[position]);
-        else naujas.run(url2[position]);
+
+        if(grafik==graph1) {
+            naujas1 = new graph_adapter();
+            naujas1.graph = grafik;
+            naujas1.txt = kaina;
+            naujas1.datosTxt = datosTxt;
+            naujas1.pav = getResources().getStringArray(R.array.cryptoNames)[position];
+            naujas1.spalva = getResources().getStringArray(R.array.ColorsGraph)[position];
+            naujas1.mode = mode;
+            naujas1.context = getApplicationContext();
+            if (mode == 0) naujas1.run(url[position]);
+            else naujas1.run(url2[position]);
+        }
+        else if(grafik==graph2) {
+            naujas2 = new graph_adapter();
+            naujas2.graph = grafik;
+            naujas2.txt = kaina;
+            naujas2.datosTxt = datosTxt;
+            naujas2.pav = getResources().getStringArray(R.array.cryptoNames)[position];
+            naujas2.spalva = getResources().getStringArray(R.array.ColorsGraph)[position];
+            naujas2.mode = mode;
+            naujas2.context = getApplicationContext();
+            if (mode == 0) naujas2.run(url[position]);
+            else naujas2.run(url2[position]);
+        }
     }
 
 

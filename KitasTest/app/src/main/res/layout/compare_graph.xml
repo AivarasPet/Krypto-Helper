@@ -207,6 +207,14 @@
                 app:layout_constraintTop_toTopOf="@+id/CmpDrop2"
                 app:layout_constraintVertical_bias="0.571" />
 
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="286dp"
+                android:layout_height="wrap_content"
+                android:max="179"
+                tools:layout_editor_absoluteX="67dp"
+                tools:layout_editor_absoluteY="503dp" />
+
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
