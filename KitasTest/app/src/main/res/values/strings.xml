@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kitas Test</string>
+    <string name="app_name">Krypto Helper</string>
     <string name="edit_message">Enter a message</string>
     <string name="version">Version pre-release 0.8.7</string>
     <string name="button_send">Login</string>
