@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.ServiceWorkerClient;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.Switch;
 public class OptionsActivity extends MainActivity{
 
     Switch themeswitch;
+    Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class OptionsActivity extends MainActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
 
-        Switch themeswitch = (Switch) findViewById(R.id.theme_switch);
+        themeswitch = (Switch) findViewById(R.id.theme_switch);
         themeswitch.setChecked(usabilityLightTheme());
         themeswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -35,7 +37,17 @@ public class OptionsActivity extends MainActivity{
             }
 
         });
+
+        btn = findViewById(R.id.updateBtn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
+
+
 
 
 

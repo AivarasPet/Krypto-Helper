@@ -73,7 +73,9 @@ public class list_adapter_crypto extends BaseAdapter
             //holder.trump.setText(textas.getJSONObject(position).getString("symbol").toString());
             holder.pavadin.setText(textas.getJSONObject(position).getString("name").toString());
             holder.img.setImageResource(imgid[position]);
-            holder.kaina.setText("$ "+textas.getJSONObject(position).getString("price_usd").toString());
+            String atsiusta = textas.getJSONObject(position).getString("price_usd").toString();
+            atsiusta = String.format ("%,.2f", Double.parseDouble(atsiusta));
+            holder.kaina.setText("$ "+ atsiusta);
             String pokytis = textas.getJSONObject(position).getString("percent_change_24h").toString();
             if(pokytis.startsWith("-")) {
                // pokytis.substring(2, pokytis.length());

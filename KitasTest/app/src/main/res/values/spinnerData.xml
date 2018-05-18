@@ -5,11 +5,11 @@
     <item>Ethereum</item>
     <item>Ripple</item>
     <item>Bitcoin Cash</item>
-    <item>Litecoin</item>
     <item>EOS</item>
+    <item>Litecoin</item>
     <item>Cardano</item>
     <item>Stellar</item>
-    <item>NEO</item>
     <item>IOTA</item>
+    <item>TRON</item>
 </string-array>
 </resources>

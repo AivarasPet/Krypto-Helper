@@ -18,9 +18,9 @@ public class MoneyActivity extends MainActivity {
 
     ListView list;
 
-    Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.litecoin,
-                     R.drawable.eos, R.drawable.stellar, R.drawable.cardano, R.drawable.neo,
-                     R.drawable.iota };
+    Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.eos,
+                     R.drawable.litecoin, R.drawable.cardano, R.drawable.stellar, R.drawable.iota,
+                     R.drawable.tron };
 
 
     @Override

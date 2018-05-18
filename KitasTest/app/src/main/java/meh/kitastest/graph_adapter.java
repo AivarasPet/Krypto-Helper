@@ -23,6 +23,8 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
+import static java.lang.Math.round;
+
 public class graph_adapter {
 
 
@@ -97,8 +99,9 @@ public class graph_adapter {
                 series.setOnDataPointTapListener(new OnDataPointTapListener() {
                     @Override
                     public void onTap(Series series, DataPointInterface dataPoint) {
-                        int kaina = (int) dataPoint.getY();
-                        txt.setText("$" + kaina);
+                        //double kaina = Math.round(dataPoint.getY());
+                        String numberAsString = String.format ("%,.2f", dataPoint.getY());
+                        txt.setText("$" + numberAsString);
                         int x = (int) dataPoint.getX();
                         try {
                             laikas[0] = textas.getJSONObject(x).getString("time").toString();
