@@ -28,7 +28,7 @@ public class InfoActivity extends MainActivity {
         text = (TextView) findViewById(R.id.info_text);
 
         final Spinner spinner = (Spinner) findViewById(R.id.infoSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.cryptoNames, android.R.layout.simple_spinner_item);
+        ArrayAdapter<String > adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,  public_stuff.sortedTOP);
 // Specify the layout to use when the list of choices appears
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

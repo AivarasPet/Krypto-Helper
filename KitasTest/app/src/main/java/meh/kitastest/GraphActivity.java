@@ -1,5 +1,6 @@
 package meh.kitastest;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +24,7 @@ public class GraphActivity extends MainActivity{
     Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.eos,
             R.drawable.litecoin, R.drawable.cardano, R.drawable.stellar, R.drawable.iota,
             R.drawable.tron };
+
 
     TextView kaina, datosTxt;
     ImageView img;
@@ -87,6 +89,7 @@ public class GraphActivity extends MainActivity{
 
 
 
+
     }
 
 
@@ -144,7 +147,7 @@ public class GraphActivity extends MainActivity{
     private void DefineStuff(final int kiekis) {
 
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.cryptoNames, android.R.layout.simple_spinner_item);
+        ArrayAdapter<String > adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,  public_stuff.sortedTOP);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1 = (Spinner) findViewById(R.id.CmpDrop1);
         spinner1.setAdapter(adapter);
