@@ -15,6 +15,12 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.io.InputStream;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,8 +52,10 @@ public class MainActivity extends AppCompatActivity {
             editor.commit();
         }
 
-        super.onCreate(savedInstanceState);        //super is used to call the parent class constructor
+        super.onCreate(savedInstanceState);    //super is used to call the parent class constructor
         setContentView(R.layout.main_menu);    //setContentView is used to set the xml
+
+
 
         money_button = (Button) findViewById(R.id.moneyBut);
         options_button = (Button) findViewById(R.id.optionsBut);
@@ -88,9 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
         if(isNetworkAvailable(getApplicationContext())) Toast.makeText(getApplicationContext(), "App won't work without Internet Connection!!!", Toast.LENGTH_LONG);
 
-        SharedPreferences pref = getSharedPreferences("prefs", MODE_PRIVATE);
-        String a = pref.getString("topCrypto", "");
+        String a = preferences.getString("topCrypto", "");
         public_stuff.sortedTOP = a.split(",");
+
+        public_stuff.visas = parseJSONlocal("viskas.json");
     }
     public boolean usabilityLightTheme() {
         return useLightTheme;
@@ -159,5 +168,25 @@ public class MainActivity extends AppCompatActivity {
     public boolean isNetworkAvailable(Context context) {
         final ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
         return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
+    }
+
+    private JSONArray parseJSONlocal(String folderName) {
+        try {
+            InputStream inputStream = getAssets().open(folderName);
+            int size = inputStream.available();
+            byte[] buffer = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            String string = new String(buffer, "UTF-8");
+            JSONArray jsonArray = new JSONArray(string);
+            return jsonArray;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

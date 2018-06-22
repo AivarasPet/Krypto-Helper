@@ -16,15 +16,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collections;
 
 public class MoneyActivity extends MainActivity {
 
     ListView list;
-    Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.eos,
-                     R.drawable.litecoin, R.drawable.cardano, R.drawable.stellar, R.drawable.iota,
-                     R.drawable.tron };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +64,7 @@ public class MoneyActivity extends MainActivity {
 
 
             list = (ListView) findViewById(R.id.listView);
-            list_adapter_crypto custom = new list_adapter_crypto(this, textas, imgid);
+            list_adapter_crypto custom = new list_adapter_crypto(this, textas);
             list.setAdapter(custom);
             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -106,6 +104,8 @@ public class MoneyActivity extends MainActivity {
         ///Log.d("LOOOOOOK ", sb.toString());
         //Toast.makeText(getApplicationContext(), sb.toString(), Toast.LENGTH_LONG).show();
     }
+
+
 
 
 

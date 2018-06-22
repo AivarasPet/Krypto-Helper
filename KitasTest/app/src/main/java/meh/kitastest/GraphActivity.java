@@ -15,15 +15,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
 
 import javax.net.ssl.SSLPeerUnverifiedException;
 
 
 public class GraphActivity extends MainActivity{
 
-    Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.eos,
-            R.drawable.litecoin, R.drawable.cardano, R.drawable.stellar, R.drawable.iota,
-            R.drawable.tron };
+
 
 
     TextView kaina, datosTxt;
@@ -36,31 +37,9 @@ public class GraphActivity extends MainActivity{
     private int mode=0;
     private boolean isCompare=false;
     public graph_adapter naujas1, naujas2;
+    String url;
 
-    String[] url = {
-            "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=XRP&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=BCH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=EOS&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=LTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=ADA&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=XLM&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=IOT&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=TRX&tsym=USD&limit=30&aggregate=1&e=CCCAGG"
-    };
-    String[] url2 = {
-            "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histohour?fsym=XRP&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histohour?fsym=BCH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histohour?fsym=EOS&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histohour?fsym=LTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histohour?fsym=ADA&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histohour?fsym=XLM&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histohour?fsym=IOT&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histohour?fsym=TRX&tsym=USD&limit=30&aggregate=1&e=CCCAGG"
-    };
+
     //getResources().getStringArray(R.array.your_array)[position]
 
 
@@ -156,8 +135,13 @@ public class GraphActivity extends MainActivity{
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                createClass(position, graph1);
-                img.setImageResource(imgid[position]);
+                String url = null;   // fotkems
+                try {
+                    url = public_stuff.visas.getJSONObject(0).getString(public_stuff.sortedTOP[position]);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Picasso.get().load(url).resize(128, 128).centerCrop().into(img);        // fotkemsimg.setImageResource(imgid[position]);
             }
 
             @Override
@@ -213,6 +197,7 @@ public class GraphActivity extends MainActivity{
     }
 
     private void createClass(int position, GraphView grafik) {
+        // STAI KODAS GAUT URL: String url = )public_stuff.visas.getJSONObject(1).getString(public_stuff.sortedTOP[position];   // 1 yra menesio 2 - paros
 
         if(grafik==graph1) {
             naujas1 = new graph_adapter();
@@ -223,8 +208,23 @@ public class GraphActivity extends MainActivity{
             naujas1.spalva = getResources().getStringArray(R.array.ColorsGraph)[position];
             naujas1.mode = mode;
             naujas1.context = getApplicationContext();
-            if (mode == 0) naujas1.run(url[position]);
-            else naujas1.run(url2[position]);
+            if (mode == 0) {
+                String url = null;
+                try {
+                    url = public_stuff.visas.getJSONObject(1).getString(public_stuff.sortedTOP[position]).toString();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                naujas1.run(url);
+            }
+            else {
+                try {
+                    url = public_stuff.visas.getJSONObject(1).getString(public_stuff.sortedTOP[position]).toString();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                naujas1.run(url);
+                 }
         }
         else if(grafik==graph2) {
             naujas2 = new graph_adapter();
@@ -235,8 +235,23 @@ public class GraphActivity extends MainActivity{
             naujas2.spalva = getResources().getStringArray(R.array.ColorsGraph)[position];
             naujas2.mode = mode;
             naujas2.context = getApplicationContext();
-            if (mode == 0) naujas2.run(url[position]);
-            else naujas2.run(url2[position]);
+            if (mode == 0) {
+                String url = null;
+                try {
+                    url = public_stuff.visas.getJSONObject(2).getString(public_stuff.sortedTOP[position]).toString();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                naujas2.run(url);
+            }
+            else {
+                try {
+                    url = public_stuff.visas.getJSONObject(2).getString(public_stuff.sortedTOP[position]).toString();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                naujas2.run(url);
+            }
         }
     }
 

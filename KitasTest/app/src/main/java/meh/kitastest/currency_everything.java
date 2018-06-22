@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,10 +26,6 @@ public class currency_everything extends MainActivity {
     GraphView graph;
     ImageView img;
     public int kelintas;
-
-    Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.eos,
-            R.drawable.litecoin, R.drawable.cardano, R.drawable.stellar, R.drawable.iota,
-            R.drawable.tron };
 
     String[] url = {
             "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
@@ -81,7 +78,9 @@ public class currency_everything extends MainActivity {
             pokyt.setText(textas.getJSONObject(position).getString("percent_change_24h").toString()+"%");
             kainaBTC.setText(textas.getJSONObject(position).getString("price_btc").toString());
             pokyt7d.setText(textas.getJSONObject(position).getString("percent_change_7d").toString()+"%");
-            img.setImageResource(imgid[position]);
+            String url = public_stuff.visas.getJSONObject(0).getString(public_stuff.sortedTOP[position]);   // fotkems
+            Picasso.get().load(url).resize(256, 256).centerCrop().into(img);        // fotkems
+
 
         } catch (JSONException e) {
             e.printStackTrace();

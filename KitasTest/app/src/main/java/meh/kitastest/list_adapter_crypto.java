@@ -9,6 +9,8 @@ package meh.kitastest;
         import android.widget.ImageView;
         import android.widget.TextView;
 
+        import com.squareup.picasso.Picasso;
+
         import org.json.JSONArray;
         import org.json.JSONException;
         import org.json.JSONObject;
@@ -20,16 +22,15 @@ package meh.kitastest;
 public class list_adapter_crypto extends BaseAdapter
 {
 
-    private Integer[] imgid;
+
     private  JSONArray textas;
 
     private Activity context;
     private LayoutInflater inflater;
-    public list_adapter_crypto(Activity context, JSONArray textas, Integer[] imgid)
+    public list_adapter_crypto(Activity context, JSONArray textas)
     {
         this.textas = textas;
         this.context = context;
-        this.imgid = imgid;
         this.inflater = context.getLayoutInflater();
     }
 
@@ -72,7 +73,15 @@ public class list_adapter_crypto extends BaseAdapter
         try {
             //holder.trump.setText(textas.getJSONObject(position).getString("symbol").toString());
             holder.pavadin.setText(textas.getJSONObject(position).getString("name").toString());
-            holder.img.setImageResource(imgid[position]);
+
+
+                //new Thread(
+                //        public_stuff.downloadCryptoPic(holder.img, position, 128, 128)
+               // ).start();
+            String url = public_stuff.visas.getJSONObject(0).getString(public_stuff.sortedTOP[position]);
+                      Picasso.get().load(url).resize(128, 128).centerCrop().into(holder.img);
+
+                   // fotkems
             String atsiusta = textas.getJSONObject(position).getString("price_usd").toString();
             atsiusta = String.format ("%,.2f", Double.parseDouble(atsiusta));
             holder.kaina.setText("$ "+ atsiusta);
