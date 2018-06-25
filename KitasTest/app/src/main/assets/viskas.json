@@ -39,22 +39,22 @@
     },
     {
         "name": "grafikaiValandos",
-        "Bitcoin": "https://min-api.cryptocompare.com/data/histhour?fsym=BTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "Ethereum": "https://min-api.cryptocompare.com/data/histhour?fsym=ETH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "Ripple": "https://min-api.cryptocompare.com/data/histhour?fsym=XRP&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "Bitcoin Cash": "https://min-api.cryptocompare.com/data/histhour?fsym=BCH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "EOS": "https://min-api.cryptocompare.com/data/histhour?fsym=EOS&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "Litecoin": "https://min-api.cryptocompare.com/data/histhour?fsym=LTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "Stellar": "https://min-api.cryptocompare.com/data/histhour?fsym=XLM&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "Cardano": "https://min-api.cryptocompare.com/data/histhour?fsym=ADA&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "IOTA": "https://min-api.cryptocompare.com/data/histhour?fsym=MIOTA&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "TRON": "https://min-api.cryptocompare.com/data/histhour?fsym=TRX&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "Tether": "https://min-api.cryptocompare.com/data/histhour?fsym=USDT&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "NEO": "https://min-api.cryptocompare.com/data/histhour?fsym=NEO&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "Dash": "https://min-api.cryptocompare.com/data/histhour?fsym=DASH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "Monero": "https://min-api.cryptocompare.com/data/histhour?fsym=XMR&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "Binance Coin": "https://min-api.cryptocompare.com/data/histhour?fsym=BNB&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "VeChain": "https://min-api.cryptocompare.com/data/histhour?fsym=VEN&tsym=USD&limit=30&aggregate=1&e=CCCAGG"
+        "Bitcoin": "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "Ethereum": "https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "Ripple": "https://min-api.cryptocompare.com/data/histohour?fsym=XRP&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "Bitcoin Cash": "https://min-api.cryptocompare.com/data/histohour?fsym=BCH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "EOS": "https://min-api.cryptocompare.com/data/histohour?fsym=EOS&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "Litecoin": "https://min-api.cryptocompare.com/data/histohour?fsym=LTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "Stellar": "https://min-api.cryptocompare.com/data/histohour?fsym=XLM&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "Cardano": "https://min-api.cryptocompare.com/data/histohour?fsym=ADA&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "IOTA": "https://min-api.cryptocompare.com/data/histohour?fsym=MIOTA&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "TRON": "https://min-api.cryptocompare.com/data/histohour?fsym=TRX&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "Tether": "https://min-api.cryptocompare.com/data/histohour?fsym=USDT&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "NEO": "https://min-api.cryptocompare.com/data/histohour?fsym=NEO&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "Dash": "https://min-api.cryptocompare.com/data/histohour?fsym=DASH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "Monero": "https://min-api.cryptocompare.com/data/histohour?fsym=XMR&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "Binance Coin": "https://min-api.cryptocompare.com/data/histohour?fsym=BNB&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "VeChain": "https://min-api.cryptocompare.com/data/histohour?fsym=VEN&tsym=USD&limit=30&aggregate=1&e=CCCAGG"
     }
 
     ]

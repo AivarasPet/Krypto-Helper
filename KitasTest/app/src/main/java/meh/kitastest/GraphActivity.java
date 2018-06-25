@@ -142,6 +142,7 @@ public class GraphActivity extends MainActivity{
                     e.printStackTrace();
                 }
                 Picasso.get().load(url).resize(128, 128).centerCrop().into(img);        // fotkemsimg.setImageResource(imgid[position]);
+                createClass(position, graph1);
             }
 
             @Override
@@ -217,9 +218,9 @@ public class GraphActivity extends MainActivity{
                 }
                 naujas1.run(url);
             }
-            else {
+            else { //mode == 1
                 try {
-                    url = public_stuff.visas.getJSONObject(1).getString(public_stuff.sortedTOP[position]).toString();
+                    url = public_stuff.visas.getJSONObject(2).getString(public_stuff.sortedTOP[position]).toString();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -238,7 +239,7 @@ public class GraphActivity extends MainActivity{
             if (mode == 0) {
                 String url = null;
                 try {
-                    url = public_stuff.visas.getJSONObject(2).getString(public_stuff.sortedTOP[position]).toString();
+                    url = public_stuff.visas.getJSONObject(1).getString(public_stuff.sortedTOP[position]).toString();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
