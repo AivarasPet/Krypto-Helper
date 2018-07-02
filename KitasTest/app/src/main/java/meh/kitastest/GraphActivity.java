@@ -205,8 +205,13 @@ public class GraphActivity extends MainActivity{
             naujas1.graph = grafik;
             naujas1.txt = kaina;
             naujas1.datosTxt = datosTxt;
-            naujas1.pav = getResources().getStringArray(R.array.cryptoNames)[position];
-            naujas1.spalva = getResources().getStringArray(R.array.ColorsGraph)[position];
+            naujas1.pav = public_stuff.sortedTOP[position];
+            try {
+                String spalva = public_stuff.visas.getJSONObject(3).getString(public_stuff.sortedTOP[position]).toString();
+                naujas1.spalva = spalva;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             naujas1.mode = mode;
             naujas1.context = getApplicationContext();
             if (mode == 0) {
@@ -232,8 +237,13 @@ public class GraphActivity extends MainActivity{
             naujas2.graph = grafik;
             naujas2.txt = kaina;
             naujas2.datosTxt = datosTxt;
-            naujas2.pav = getResources().getStringArray(R.array.cryptoNames)[position];
-            naujas2.spalva = getResources().getStringArray(R.array.ColorsGraph)[position];
+            naujas2.pav = public_stuff.sortedTOP[position];
+            try {
+                String spalva = public_stuff.visas.getJSONObject(3).getString(public_stuff.sortedTOP[position]).toString();
+                naujas2.spalva = spalva;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             naujas2.mode = mode;
             naujas2.context = getApplicationContext();
             if (mode == 0) {
