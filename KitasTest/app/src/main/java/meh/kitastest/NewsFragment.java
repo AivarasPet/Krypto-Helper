@@ -1,25 +1,35 @@
 package meh.kitastest;
 
+
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
-public class NewsActivity extends MainActivity {
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class NewsFragment extends Fragment {
 
     ListView list;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        enableTheme(useLightTheme);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news);
+    public NewsFragment() {
+        // Required empty public constructor
+    }
 
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
 
         if(public_stuff.downloadedNews == false) {
             data_download dl = new data_download(new data_download.AsyncCallback() {
@@ -30,29 +40,34 @@ public class NewsActivity extends MainActivity {
             });
             dl.webSite = " https://min-api.cryptocompare.com/data/news/?lang=EN"; //https://api.coinmarketcap.com/v1/ticker/?limit=10
             dl.execute();
-        }
-            makeList();
+        }  // Streakai
+        else makeList();
 
+        View view = inflater.inflate(R.layout.fragment_money, container, false);
+        list = (ListView) view.findViewById(R.id.listView);
+        return view;
     }
 
     private void toliau(String result) {
         try {
             final JSONArray textas = new JSONArray(result);
             public_stuff.newsJson = textas;
+            makeList();
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
     }
 
     private void makeList() {
-        list = (ListView) findViewById(R.id.NewsList);
-        news_adapter custom = new news_adapter(this, public_stuff.newsJson);
+
+        news_adapter custom = new news_adapter(getActivity(), public_stuff.newsJson);
         list.setAdapter(custom);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(NewsActivity.this, WebsiteActivity.class);
+                Intent intent = new Intent(getActivity(), WebsiteActivity.class);
                 String url = null;
                 try {
                     url = public_stuff.newsJson.getJSONObject(i).getString("guid");
@@ -64,4 +79,5 @@ public class NewsActivity extends MainActivity {
             }
         });
     }
+
 }

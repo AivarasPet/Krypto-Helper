@@ -1,7 +1,5 @@
 package meh.kitastest;
 
-        import android.app.Activity;
-        import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -13,7 +11,6 @@ package meh.kitastest;
 
         import org.json.JSONArray;
         import org.json.JSONException;
-        import org.json.JSONObject;
 
 /**
  * Created by Aivaras on 2018-03-26.
@@ -25,9 +22,9 @@ public class list_adapter_crypto extends BaseAdapter
 
     private  JSONArray textas;
 
-    private Activity context;
+    private MoneyFragment context;
     private LayoutInflater inflater;
-    public list_adapter_crypto(Activity context, JSONArray textas)
+    public list_adapter_crypto(MoneyFragment context, JSONArray textas)
     {
         this.textas = textas;
         this.context = context;

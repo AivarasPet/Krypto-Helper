@@ -47,7 +47,10 @@
         -->
 
         <activity android:name=".WebsiteActivity" />
-        <activity android:name=".InfoActivity"></activity>
+        <activity android:name=".InfoActivity" />
+        <activity
+            android:name=".bottombar"
+            android:label="@string/title_activity_bottombar"></activity>
     </application>
 
 </manifest>

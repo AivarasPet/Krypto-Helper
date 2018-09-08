@@ -1,18 +1,22 @@
 package meh.kitastest;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
-import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telephony.SmsManager;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Switch;
+import android.widget.FrameLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -22,7 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements InterfaceForFragments{
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -30,9 +34,36 @@ public class MainActivity extends AppCompatActivity {
     }
     private static final String PREFS_NAME = "prefs";
     private static final String PREF_LIGHT_THEME = "dark_theme";
+    private FrameLayout MainFrame;
+    private  BottomNavigationView toolbar;
+    private MoneyFragment moneyFragment;
+    private NewsFragment newsFragment;
+    private cryptoExpFragment cryptoExpFragment;
+
+
     boolean useLightTheme;
     SharedPreferences preferences;
     Button money_button, options_button, graph_button, news_button, info_button;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_trends:
+                    setFragment(moneyFragment, 0, null);
+                    return true;
+                case R.id.navigation_news:
+                    setFragment(newsFragment, 0, null);
+                    return true;
+                case R.id.navigation_portfolio:
+
+                    return true;
+            }
+            return false;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { //onCreate is used to start an activity
@@ -42,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         useLightTheme = preferences.getBoolean(PREF_LIGHT_THEME, false);
         enableTheme(useLightTheme);
 
-        SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this); //patestina ar katik ijunge
         boolean isFirstRun = wmbPreference.getBoolean("FIRSTRUN", true);
         if (isFirstRun)
         {
@@ -56,43 +87,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_menu);    //setContentView is used to set the xml
 
 
+        toolbar = (BottomNavigationView) findViewById(R.id.toolbar);    // for bottom bar
+        toolbar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        MainFrame = (FrameLayout) findViewById(R.id.mainFrame);
+        moneyFragment = new MoneyFragment();
+        newsFragment = new NewsFragment();
+        cryptoExpFragment = new cryptoExpFragment();
+        setFragment(newsFragment, 0, null);
 
-        money_button = (Button) findViewById(R.id.moneyBut);
-        options_button = (Button) findViewById(R.id.optionsBut);
-        graph_button = (Button) findViewById(R.id.graphBut);
-        news_button = (Button) findViewById(R.id.newsBut);
-        info_button = (Button) findViewById(R.id.infoBut);
+        //Atsiuntimas:
+        data_download dl = new data_download(new data_download.AsyncCallback() {
+            @Override
+            public void gavauData(String result) {
+                toliau(result);
+            }
+        });
+        dl.webSite = "https://api.coinmarketcap.com/v1/ticker/?limit=10";
+        dl.execute();
 
-        money_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,  MoneyActivity.class));
-            }
-        });
-        options_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,  OptionsActivity.class));
-            }
-        });
-        graph_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,  GraphActivity.class));
-            }
-        });
-        news_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,  NewsActivity.class));
-            }
-        });
-        info_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, InfoActivity.class));
-            }
-        });
+
 
         if(isNetworkAvailable(getApplicationContext())) Toast.makeText(getApplicationContext(), "App won't work without Internet Connection!!!", Toast.LENGTH_LONG);
 
@@ -132,37 +145,11 @@ public class MainActivity extends AppCompatActivity {
         enableTheme(useLightTheme);
         setContentView(R.layout.main_menu);
 
+    }
 
-        money_button = (Button) findViewById(R.id.moneyBut);
-        options_button = (Button) findViewById(R.id.optionsBut);
-        graph_button = (Button) findViewById(R.id.graphBut);
-
-        money_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,  MoneyActivity.class));
-            }
-        });
-        options_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,  OptionsActivity.class));
-            }
-        });
-        graph_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,  GraphActivity.class));
-            }
-        });
-        news_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,  NewsActivity.class));
-            }
-        });
-        finish();
-        startActivity(getIntent());
+    @Override
+    public void onListSelected(int position) {
+        setFragment(cryptoExpFragment, position, "expanded");
     }
 
     public boolean isNetworkAvailable(Context context) {
@@ -188,5 +175,60 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             return null;
         }
+    }
+
+
+
+
+    private void setFragment(android.support.v4.app.Fragment fragment, int position, String mode) {
+        if(mode != null) {
+            Bundle bundle = new Bundle();
+            bundle.putInt("KEY_POSITION", position);
+            fragment.setArguments(bundle);
+        }
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.mainFrame, fragment);
+        fragmentTransaction.commit();
+    }
+
+
+
+    private void toliau(final String result){
+
+
+        try {
+            final JSONArray textas = new JSONArray(result);
+            //Log.d("myTag", textas.getJSONObject(0).getString("symbol").toString());
+            //Log.d("Log.d", textas.length()+"");
+            public_stuff.money = textas;
+
+            if(public_stuff.sortedOnce == false) {
+                saveTOP(); //issaugot populiariausius
+                public_stuff.sortedOnce = true;
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            //Log.d("LOOOOOOK ","fff");
+        }
+
+    }
+
+    private void saveTOP() {
+        StringBuilder sb = new StringBuilder();
+        String PREFS_NAME = "prefs";
+        SharedPreferences pref = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        for(int x = 0; x < public_stuff.valiutuKiekis; x++) {
+            String a = null;
+            try {
+                a = public_stuff.money.getJSONObject(x).getString("name").toString();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            sb.append(a).append(",");
+        }
+        editor.putString("topCrypto", sb.toString());
+        editor.commit();
     }
 }

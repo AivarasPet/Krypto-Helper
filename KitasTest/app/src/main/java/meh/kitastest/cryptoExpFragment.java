@@ -1,28 +1,28 @@
 package meh.kitastest;
 
-import android.app.Activity;
+
 import android.content.Intent;
-import android.provider.ContactsContract;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 
-
-
-public class currency_everything extends MainActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class cryptoExpFragment extends Fragment {
 
     TextView pav, trump, kaina, pokyt, info, kainaBTC, pokyt7d;
     GraphView graph;
@@ -43,25 +43,30 @@ public class currency_everything extends MainActivity {
             "https://min-api.cryptocompare.com/data/histoday?fsym=TRX&tsym=USD&limit=30&aggregate=1&e=CCCAGG"
     };
 
+    public cryptoExpFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        enableTheme(useLightTheme);
-        super.onCreate(savedInstanceState);
-        frameLayout = (FrameLayout) findViewById(R.id.mainFrame);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
 
 
-        Bundle bundle = getIntent().getExtras();
-        pav = (TextView) findViewById(R.id.nameInDetailed);
-        trump = (TextView) findViewById(R.id.trumpinysInDetailed);
-        img = (ImageView) findViewById(R.id.imageInDetailed);
-        kaina = (TextView) findViewById(R.id.priceInDetailed);
-        pokyt = (TextView) findViewById(R.id.changeInDetailed);
-        info = (TextView) findViewById(R.id.infoInDetails);
-        graph = (GraphView) findViewById(R.id.graphInDetailed);
-        kainaBTC = (TextView) findViewById(R.id.priceInBTC);
-        pokyt7d = (TextView) findViewById(R.id.weekChange);
+        Bundle bundle = getArguments();
+        View view = inflater.inflate(R.layout.fragment_crypto_exp, container, false);
+        pav = (TextView) view.findViewById(R.id.nameInDetailed);
+        trump = (TextView) view.findViewById(R.id.trumpinysInDetailed);
+        img = (ImageView) view.findViewById(R.id.imageInDetailed);
+        kaina = (TextView) view.findViewById(R.id.priceInDetailed);
+        pokyt = (TextView) view.findViewById(R.id.changeInDetailed);
+        info = (TextView) view.findViewById(R.id.infoInDetails);
+        graph = (GraphView) view.findViewById(R.id.graphInDetailed);
+        kainaBTC = (TextView) view.findViewById(R.id.priceInBTC);
+        pokyt7d = (TextView) view.findViewById(R.id.weekChange);
         //txt1.setText(bundle.getString("jsonStr"));
-        kelintas = bundle.getInt("kelintas");
+        kelintas = bundle.getInt("KEY_POSITION");
         handleLook(kelintas, public_stuff.money);
 
 
@@ -70,8 +75,8 @@ public class currency_everything extends MainActivity {
         infoPre = infoPre.substring(0, 200)+" ...";
         info.setText(infoPre);
 
+        return view;
     }
-
 
     private void handleLook(int position, JSONArray textas) {
         try {
@@ -95,13 +100,13 @@ public class currency_everything extends MainActivity {
     }
 
     public void onGraphClick(View v) {
-        Intent intent = new Intent(getApplicationContext(), GraphActivity.class);
+        Intent intent = new Intent(getActivity(), GraphActivity.class);
         intent.putExtra("kelintas", kelintas);
         startActivity(intent);
     }
 
     public void onClickDetails(View v) {
-        Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
+        Intent intent = new Intent(getActivity(), InfoActivity.class);
         intent.putExtra("kelintas", kelintas);
         startActivity(intent);
     }
@@ -113,10 +118,8 @@ public class currency_everything extends MainActivity {
         naujas.pav = getResources().getStringArray(R.array.cryptoNames)[position];
         naujas.spalva = getResources().getStringArray(R.array.ColorsGraph)[position];
         naujas.mode = 0;
-        naujas.context = getApplicationContext();
+        naujas.context = getActivity();
         naujas.run(url[position]);
     }
 
 }
-
-

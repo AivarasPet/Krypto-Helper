@@ -11,9 +11,7 @@ import android.widget.TextView;
 
 public class InfoActivity extends MainActivity {
 
-    Integer[] imgid={R.drawable.btc, R.drawable.eth, R.drawable.ripple, R.drawable.bitcoin_cash, R.drawable.eos,
-            R.drawable.litecoin, R.drawable.cardano, R.drawable.stellar, R.drawable.iota,
-            R.drawable.tron };
+
 
     ImageView img;
     TextView text;
@@ -40,7 +38,7 @@ public class InfoActivity extends MainActivity {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 //Toast.makeText(getApplicationContext(), position, Toast.LENGTH_LONG);
                 //Log.d("D", position+"");
-                img.setImageResource(imgid[position]);
+               // img.setImageResource(imgid[position]);
                 text.setText(getResources().getStringArray(R.array.Info)[position]);
             }
 
