@@ -246,7 +246,6 @@
                 android:layout_marginTop="30dp"
                 android:background="#fff"
                 android:clickable="true"
-                android:onClick="onGraphClick"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -260,7 +259,6 @@
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="25dp"
                 android:fontFamily="@font/aldrich"
-                android:onClick="onClickDetails"
                 android:text="TextView"
                 android:textSize="15sp"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -273,7 +271,6 @@
                 android:layout_marginBottom="45dp"
                 android:clickable="true"
                 android:fontFamily="@font/aldrich"
-                android:onClick="onClickDetails"
                 android:text="(CLICK FOR MORE)"
                 android:textAlignment="center"
                 android:textSize="17sp" />

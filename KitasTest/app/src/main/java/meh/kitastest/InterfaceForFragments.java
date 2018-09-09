@@ -1,6 +1,12 @@
 package meh.kitastest;
 
+import android.os.Bundle;
+
 public interface InterfaceForFragments {
-    String KEY_POSITION = "KEY_POSITION";
-    void onListSelected(int position);
+
+    int KEY_POSITION = 1;
+    String KEY_MODE="KEY_SELECTED_COUNTRY";
+
+
+    void onActionInFragment(Bundle bundle);
 }

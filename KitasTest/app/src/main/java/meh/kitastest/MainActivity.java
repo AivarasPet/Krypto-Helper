@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -52,10 +53,10 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_trends:
-                    setFragment(moneyFragment, 0, null);
+                    setFragment(moneyFragment,  null);
                     return true;
                 case R.id.navigation_news:
-                    setFragment(newsFragment, 0, null);
+                    setFragment(newsFragment,  null);
                     return true;
                 case R.id.navigation_portfolio:
 
@@ -91,9 +92,11 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
         toolbar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         MainFrame = (FrameLayout) findViewById(R.id.mainFrame);
         moneyFragment = new MoneyFragment();
+        moneyFragment.setInterfaceForFragments(this);
         newsFragment = new NewsFragment();
         cryptoExpFragment = new cryptoExpFragment();
-        setFragment(newsFragment, 0, null);
+
+        setFragment(newsFragment, null);
 
         //Atsiuntimas:
         data_download dl = new data_download(new data_download.AsyncCallback() {
@@ -148,9 +151,10 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
     }
 
     @Override
-    public void onListSelected(int position) {
-        setFragment(cryptoExpFragment, position, "expanded");
+    public void onActionInFragment(Bundle bundle) {
+                setFragment(cryptoExpFragment, bundle);
     }
+
 
     public boolean isNetworkAvailable(Context context) {
         final ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
@@ -180,11 +184,17 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
 
 
 
-    private void setFragment(android.support.v4.app.Fragment fragment, int position, String mode) {
-        if(mode != null) {
-            Bundle bundle = new Bundle();
-            bundle.putInt("KEY_POSITION", position);
-            fragment.setArguments(bundle);
+    private void setFragment(android.support.v4.app.Fragment fragment, Bundle bundle) {
+        if(bundle != null) { // jei egzisuoja bundle
+            String mode = bundle.getString("KEY_MODE");
+            switch (mode) {
+                case "ListClick":
+                    Bundle bundle2 = new Bundle();
+                    int position = bundle.getInt("KEY_POSITION");
+                    bundle2.putInt("KEY_POSITION", position); //is pirmo i antra
+                    fragment.setArguments(bundle2);
+                    break;
+            }
         }
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.mainFrame, fragment);
@@ -209,7 +219,6 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
 
         } catch (JSONException e) {
             e.printStackTrace();
-            //Log.d("LOOOOOOK ","fff");
         }
 
     }

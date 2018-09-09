@@ -22,7 +22,7 @@ import org.json.JSONException;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class cryptoExpFragment extends Fragment {
+public class cryptoExpFragment extends Fragment implements View.OnClickListener {
 
     TextView pav, trump, kaina, pokyt, info, kainaBTC, pokyt7d;
     GraphView graph;
@@ -93,23 +93,9 @@ public class cryptoExpFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
-
     }
 
-    public void onGraphClick(View v) {
-        Intent intent = new Intent(getActivity(), GraphActivity.class);
-        intent.putExtra("kelintas", kelintas);
-        startActivity(intent);
-    }
 
-    public void onClickDetails(View v) {
-        Intent intent = new Intent(getActivity(), InfoActivity.class);
-        intent.putExtra("kelintas", kelintas);
-        startActivity(intent);
-    }
 
     private void createClass(int position, GraphView grafik) {
         graph_adapter naujas = new graph_adapter();
@@ -122,4 +108,8 @@ public class cryptoExpFragment extends Fragment {
         naujas.run(url[position]);
     }
 
+    @Override
+    public void onClick(View v) {
+        Log.d("veik", "veik");
+    }
 }

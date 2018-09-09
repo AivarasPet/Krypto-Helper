@@ -52,8 +52,10 @@ public class MoneyFragment extends Fragment {
             @Override
            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(interfaceForFragments!=null) {
-                    Log.d("bam", "Veikia");
-                    interfaceForFragments.onListSelected(i);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("KEY_POSITION", i);
+                    bundle.putString("KEY_MODE", "ListClick");
+                    interfaceForFragments.onActionInFragment(bundle);
 
                 }
 
