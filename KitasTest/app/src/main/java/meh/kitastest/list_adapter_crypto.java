@@ -1,5 +1,7 @@
 package meh.kitastest;
 
+        import android.content.Context;
+        import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
@@ -24,7 +26,7 @@ public class list_adapter_crypto extends BaseAdapter
 
     private MoneyFragment context;
     private LayoutInflater inflater;
-    public list_adapter_crypto(MoneyFragment context, JSONArray textas)
+    public list_adapter_crypto(Context context, JSONArray textas)
     {
         this.textas = textas;
         this.context = context;
@@ -72,15 +74,15 @@ public class list_adapter_crypto extends BaseAdapter
             holder.pavadin.setText(textas.getJSONObject(position).getString("name").toString());
 
 
-                //new Thread(
-                //        public_stuff.downloadCryptoPic(holder.img, position, 128, 128)
-               // ).start();
+                      // fotkems
             String url = public_stuff.visas.getJSONObject(0).getString(public_stuff.sortedTOP[position]);
                       Picasso.get().load(url).resize(128, 128).centerCrop().into(holder.img);
+                      // fotkems
 
-                   // fotkems
-            String atsiusta = textas.getJSONObject(position).getString("price_usd").toString();
+            String atsiusta = textas.getJSONObject(position).getString("price_usd").toString(); //KAINA
             atsiusta = String.format ("%,.2f", Double.parseDouble(atsiusta));
+            Log.d("DARO ", position+"");
+            if(position == 2) Log.d("RIPLLE", atsiusta);
             holder.kaina.setText("$ "+ atsiusta);
             String pokytis = textas.getJSONObject(position).getString("percent_change_24h").toString();
             if(pokytis.startsWith("-")) {
@@ -98,7 +100,7 @@ public class list_adapter_crypto extends BaseAdapter
         return convertView;
     }
     class ViewHolder{
-        TextView trump, pavadin, kaina, pokytis;
+        TextView pavadin, kaina, pokytis;
         ImageView img; // atskiri
 
     }

@@ -1,5 +1,6 @@
 package meh.kitastest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
@@ -19,5 +20,10 @@ public class WebsiteActivity extends AppCompatActivity {
         //setContentView(webView);
         String url = bundle.getString("url");
         webView.loadUrl(url);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(WebsiteActivity.this, MainActivity.class));
     }
 }

@@ -20,6 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:orientation="vertical">
 
             <ImageView
@@ -30,8 +31,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/nameInDetailed"
@@ -133,8 +133,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="3dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginRight="26dp"
                     android:layout_marginLeft="26dp"
+                    android:layout_marginRight="26dp"
                     android:layout_marginTop="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                     app:layout_constraintEnd_toEndOf="@+id/imageView2"

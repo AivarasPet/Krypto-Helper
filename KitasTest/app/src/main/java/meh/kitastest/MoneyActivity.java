@@ -23,35 +23,34 @@ import java.util.Collections;
 public class MoneyActivity extends MainActivity {
 
     ListView list;
+    list_adapter_crypto adapter;
+    boolean sukurtasAdapteris = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         enableTheme(useLightTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crypto_list);
-
-
-
-
-        // list = (ListView) findViewById(R.id.listView);
-        //list_adapter_crypto custom = new list_adapter_crypto(this., textas);
-        //list.setAdapter(custom);
-        //list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        //    @Override
-        //   public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        //      Intent intent = new Intent(MoneyActivity.this, currency_everything.class);
-        //     intent.putExtra("jsonStr", result);
-        //    intent.putExtra("kelintas", i);
-        //    startActivity(intent);
-        // }
-        //});
+        makeTheList();
 
 
 
     }
 
 
-
+    private void makeTheList() {
+        if(!sukurtasAdapteris) {adapter = new list_adapter_crypto(getBaseContext(), public_stuff.money); sukurtasAdapteris = true;}
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("KEY_POSITION", i);
+                    bundle.putString("KEY_MODE", "ListClick");
+            }
+        });
+    }
 
 }
 ///String[] playlists = playlist.split(","); taip gaut data-

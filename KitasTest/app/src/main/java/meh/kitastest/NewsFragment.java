@@ -4,11 +4,13 @@ package meh.kitastest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,13 +19,16 @@ import org.json.JSONException;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewsFragment extends Fragment {
+public class NewsFragment extends Fragment  {
 
     ListView list;
+    news_adapter adapter;
+    boolean sukurtasAdapteris = false;
 
     public NewsFragment() {
         // Required empty public constructor
     }
+
 
 
     @Override
@@ -42,11 +47,14 @@ public class NewsFragment extends Fragment {
             dl.execute();
         }  // Streakai
         else makeList();
-
         View view = inflater.inflate(R.layout.fragment_money, container, false);
         list = (ListView) view.findViewById(R.id.listView);
+
         return view;
     }
+
+
+
 
     private void toliau(String result) {
         try {
@@ -62,8 +70,8 @@ public class NewsFragment extends Fragment {
 
     private void makeList() {
 
-        news_adapter custom = new news_adapter(getActivity(), public_stuff.newsJson);
-        list.setAdapter(custom);
+        if(!sukurtasAdapteris) { adapter = new news_adapter(getActivity(), public_stuff.newsJson); sukurtasAdapteris = true; }
+        list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

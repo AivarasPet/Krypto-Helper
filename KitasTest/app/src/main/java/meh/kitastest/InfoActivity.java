@@ -1,5 +1,6 @@
 package meh.kitastest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class InfoActivity extends MainActivity {
+public class InfoActivity extends AppCompatActivity {
 
 
 
@@ -18,7 +19,6 @@ public class InfoActivity extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        enableTheme(useLightTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
@@ -54,5 +54,10 @@ public class InfoActivity extends MainActivity {
             int lol = bundle.getInt("kelintas");
             spinner.setSelection(lol);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(InfoActivity.this, MainActivity.class));
     }
 }

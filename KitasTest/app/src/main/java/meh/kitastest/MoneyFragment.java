@@ -23,6 +23,8 @@ public class MoneyFragment extends Fragment {
 
     ListView list;
     InterfaceForFragments interfaceForFragments;
+    list_adapter_crypto adapter;
+    boolean sukurtasAdapteris = false;
 
     public MoneyFragment() {
         // Required empty public constructor
@@ -46,8 +48,8 @@ public class MoneyFragment extends Fragment {
 
 
     private void makeTheList() {
-        list_adapter_crypto custom = new list_adapter_crypto(this, public_stuff.money);
-        list.setAdapter(custom);
+        if(!sukurtasAdapteris) {adapter = new list_adapter_crypto(this, public_stuff.money); sukurtasAdapteris = true;}
+        list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

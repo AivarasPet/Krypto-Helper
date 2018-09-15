@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.squareup.picasso.Picasso;
@@ -62,7 +63,9 @@ public class cryptoExpFragment extends Fragment implements View.OnClickListener 
         kaina = (TextView) view.findViewById(R.id.priceInDetailed);
         pokyt = (TextView) view.findViewById(R.id.changeInDetailed);
         info = (TextView) view.findViewById(R.id.infoInDetails);
+        info.setOnClickListener(this);
         graph = (GraphView) view.findViewById(R.id.graphInDetailed);
+        graph.setOnClickListener(this);
         kainaBTC = (TextView) view.findViewById(R.id.priceInBTC);
         pokyt7d = (TextView) view.findViewById(R.id.weekChange);
         //txt1.setText(bundle.getString("jsonStr"));
@@ -74,7 +77,7 @@ public class cryptoExpFragment extends Fragment implements View.OnClickListener 
         String infoPre = getResources().getStringArray(R.array.Info)[kelintas];
         infoPre = infoPre.substring(0, 200)+" ...";
         info.setText(infoPre);
-
+        Toast.makeText(getActivity(), "App won't work !!!", Toast.LENGTH_LONG);
         return view;
     }
 
@@ -82,7 +85,9 @@ public class cryptoExpFragment extends Fragment implements View.OnClickListener 
         try {
             trump.setText(textas.getJSONObject(position).getString("symbol").toString());
             pav.setText(textas.getJSONObject(position).getString("name").toString());
-            kaina.setText(textas.getJSONObject(position).getString("price_usd").toString()+"$");
+            String price = textas.getJSONObject(position).getString("price_usd").toString(); //KAINA
+            price = String.format ("%,.2f", Double.parseDouble(price));
+            kaina.setText("$"+price);
             pokyt.setText(textas.getJSONObject(position).getString("percent_change_24h").toString()+"%");
             kainaBTC.setText(textas.getJSONObject(position).getString("price_btc").toString());
             pokyt7d.setText(textas.getJSONObject(position).getString("percent_change_7d").toString()+"%");
@@ -110,6 +115,19 @@ public class cryptoExpFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        Log.d("veik", "veik");
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.graphInDetailed:
+                intent = new Intent(getActivity(), GraphActivity.class);
+                intent.putExtra("kelintas", kelintas);
+                startActivity(intent);
+                break;
+            case R.id.infoInDetails:
+                intent = new Intent(getActivity(), InfoActivity.class);
+                intent.putExtra("kelintas", kelintas);
+                startActivity(intent);
+                break;
+        }
+        //Log.d("veik", "veik");
     }
 }

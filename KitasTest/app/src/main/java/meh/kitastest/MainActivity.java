@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
+import android.os.Debug;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
                     setFragment(newsFragment,  null);
                     return true;
                 case R.id.navigation_portfolio:
-
+                    startActivity(new Intent(getApplication(), MoneyActivity.class));
                     return true;
             }
             return false;
@@ -74,16 +76,6 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
         useLightTheme = preferences.getBoolean(PREF_LIGHT_THEME, false);
         enableTheme(useLightTheme);
 
-        SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this); //patestina ar katik ijunge
-        boolean isFirstRun = wmbPreference.getBoolean("FIRSTRUN", true);
-        if (isFirstRun)
-        {
-            // Code to run once
-            SharedPreferences.Editor editor = wmbPreference.edit();
-            editor.putBoolean("FIRSTRUN", false);
-            editor.commit();
-        }
-
         super.onCreate(savedInstanceState);    //super is used to call the parent class constructor
         setContentView(R.layout.main_menu);    //setContentView is used to set the xml
 
@@ -96,7 +88,9 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
         newsFragment = new NewsFragment();
         cryptoExpFragment = new cryptoExpFragment();
 
-        setFragment(newsFragment, null);
+        if(public_stuff.FragmentNum == 1) setFragment(newsFragment, null);
+        else if(public_stuff.FragmentNum == 0) setFragment(moneyFragment, null);
+
 
         //Atsiuntimas:
         data_download dl = new data_download(new data_download.AsyncCallback() {
@@ -117,6 +111,7 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
 
         public_stuff.visas = parseJSONlocal("viskas.json");
     }
+
     public boolean usabilityLightTheme() {
         return useLightTheme;
     }
@@ -241,3 +236,15 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
         editor.commit();
     }
 }
+
+   // kaip suzinot is shared prefrencu ar appas buvo ijungtas:
+
+   // SharedPreferences wmbPreference = PreferenceManager.getDefaultSharedPreferences(this); //patestina ar katik ijunge
+   // boolean isFirstRun = wmbPreference.getBoolean("FIRSTRUN", true);
+   //     if (isFirstRun)
+   //             {
+   //             // Code to run once
+   //             SharedPreferences.Editor editor = wmbPreference.edit();
+   //             editor.putBoolean("FIRSTRUN", false);
+   //             editor.commit();
+   //             }

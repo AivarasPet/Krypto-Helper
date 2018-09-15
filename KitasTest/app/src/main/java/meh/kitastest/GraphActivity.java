@@ -1,5 +1,6 @@
 package meh.kitastest;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ import org.json.JSONException;
 import javax.net.ssl.SSLPeerUnverifiedException;
 
 
-public class GraphActivity extends MainActivity{
+public class GraphActivity extends AppCompatActivity {
 
 
 
@@ -45,7 +46,6 @@ public class GraphActivity extends MainActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        enableTheme(useLightTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
 
@@ -69,6 +69,11 @@ public class GraphActivity extends MainActivity{
 
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(GraphActivity.this, MainActivity.class));
     }
 
 
