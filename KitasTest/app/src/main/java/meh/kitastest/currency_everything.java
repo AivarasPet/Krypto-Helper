@@ -111,7 +111,7 @@ public class currency_everything extends MainActivity {
         naujas.graph = grafik;
         naujas.isPreview = true;
         naujas.pav = getResources().getStringArray(R.array.cryptoNames)[position];
-        naujas.spalva = getResources().getStringArray(R.array.ColorsGraph)[position];
+        //naujas.spalva = getResources().getStringArray(R.array.ColorsGraph)[position];
         naujas.mode = 0;
         naujas.context = getApplicationContext();
         naujas.run(url[position]);

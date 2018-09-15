@@ -12,12 +12,22 @@
 
 
     <!--                    LIGHT THEME                           -->
-    <style name="LightAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="WhiteAppTheme" parent="Theme.AppCompat.Light.NoActionBar">  <!--WHITE IR LIGHT APKEISTI KOL NEPADARYSIM KINTANCIOS TEMOS-->
         <item name="colorPrimary">@color/colorPrimaryLight</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkLight</item>
         <item name="colorAccent">@color/colorAccentLight</item>
-        <item name="android:background">@color/colorBackgroundLight</item>]
+        <item name="android:background">@color/colorBackgroundLight</item>
         <item name="android:textColor">@color/textLight</item>
+        <item name="android:fontFamily">@font/black_ops_one</item>
+    </style>
+
+    <!--                     WHITE THEME                          -->
+    <style name="LightAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryWhite</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkWhite</item>
+        <item name="colorAccent">@color/colorAccentWhite</item>
+        <item name="android:background">@color/colorBackgroundWhite</item>
+        <item name="android:textColor">@color/textWhite</item>
         <item name="android:fontFamily">@font/black_ops_one</item>
     </style>
 

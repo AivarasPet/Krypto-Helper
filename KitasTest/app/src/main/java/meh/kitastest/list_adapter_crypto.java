@@ -1,6 +1,5 @@
 package meh.kitastest;
 
-        import android.content.Context;
         import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
@@ -26,7 +25,7 @@ public class list_adapter_crypto extends BaseAdapter
 
     private MoneyFragment context;
     private LayoutInflater inflater;
-    public list_adapter_crypto(Context context, JSONArray textas)
+    public list_adapter_crypto(MoneyFragment context, JSONArray textas)
     {
         this.textas = textas;
         this.context = context;

@@ -40,17 +40,16 @@ public class MoneyActivity extends MainActivity {
 
 
     private void makeTheList() {
-        if(!sukurtasAdapteris) {adapter = new list_adapter_crypto(getBaseContext(), public_stuff.money); sukurtasAdapteris = true;}
-        list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("KEY_POSITION", i);
-                    bundle.putString("KEY_MODE", "ListClick");
-            }
-        });
+//        if(!sukurtasAdapteris) {adapter = new list_adapter_crypto(getBaseContext(), public_stuff.money); sukurtasAdapteris = true;}
+//       list.setAdapter(adapter);
+//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                    Bundle bundle = new Bundle();
+//                    bundle.putInt("KEY_POSITION", i);
+//                    bundle.putString("KEY_MODE", "ListClick");
+//            }
+//        });
     }
-
 }
 ///String[] playlists = playlist.split(","); taip gaut data-

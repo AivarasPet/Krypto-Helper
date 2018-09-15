@@ -52,7 +52,7 @@ public class MoneyFragment extends Fragment {
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-           public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+          public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(interfaceForFragments!=null) {
                     Bundle bundle = new Bundle();
                     bundle.putInt("KEY_POSITION", i);

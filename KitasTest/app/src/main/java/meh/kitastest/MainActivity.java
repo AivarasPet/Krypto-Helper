@@ -36,11 +36,12 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
         System.loadLibrary("native-lib");
     }
     private static final String PREFS_NAME = "prefs";
-    private static final String PREF_LIGHT_THEME = "dark_theme";
+    private static final String PREF_LIGHT_THEME = "light_theme";
     private FrameLayout MainFrame;
     private  BottomNavigationView toolbar;
     private MoneyFragment moneyFragment;
     private NewsFragment newsFragment;
+    private PortfolioFragment portfolioFragment;
     private cryptoExpFragment cryptoExpFragment;
 
 
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
                     setFragment(newsFragment,  null);
                     return true;
                 case R.id.navigation_portfolio:
-                    startActivity(new Intent(getApplication(), MoneyActivity.class));
+                    setFragment(portfolioFragment, null);
                     return true;
             }
             return false;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
 
     //  CODE FOR GETTING THE THEME
         preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        useLightTheme = preferences.getBoolean(PREF_LIGHT_THEME, false);
+        useLightTheme = preferences.getBoolean(PREF_LIGHT_THEME, true);
         enableTheme(useLightTheme);
 
         super.onCreate(savedInstanceState);    //super is used to call the parent class constructor

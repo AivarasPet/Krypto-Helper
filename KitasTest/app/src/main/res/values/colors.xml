@@ -2,20 +2,25 @@
 <resources>
     <color name="colorPrimaryDark">#3F51B5</color>
     <color name="colorPrimaryLight">#3F51B5</color>
+    <color name="colorPrimaryWhite">#86aecc</color>
 
     <color name="colorPrimaryDarkDark">#c7a300</color>
     <color name="colorPrimaryDarkLight">#47ccd1</color>
+    <color name="colorPrimaryDarkWhite">#999999</color>
 
     <color name="colorAccentDark">#c7a300</color>
     <color name="colorAccentLight">#4899e4</color>
+    <color name="colorAccentWhite">#5f93c2</color>
 
     <color name="colorBackgroundDark">#404040</color>
     <color name="colorBackgroundLight">#9fd5ff</color>
+    <color name="colorBackgroundWhite">#fff</color>
 
     <color name="menu_background">#404040</color>
 
     <color name="textDark">#fff</color>
     <color name="textLight">#3e88ff</color>
+    <color name="textWhite">#232529</color>
 
     <color name="colorTransparent">#00000000</color>
 </resources>

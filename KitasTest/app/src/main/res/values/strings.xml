@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Krypto Helper</string>
     <string name="edit_message">Enter a message</string>
-    <string name="version">Version pre-release 0.8.7</string>
+    <string name="version">Version pre-release 0.9.6</string>
     <string name="button_send">Login</string>
 
     <!-- MAIN MENU -->
@@ -84,22 +84,12 @@ The NEO project was originally launched in 2014 as AntShares with development re
     </string-array>
 
 
-    <string-array name="ColorsGraph">
-        <item>#f7931a</item>
-        <item>#343535</item>
-        <item>#0081c2</item>
-        <item>#f7931a</item>
-        <item>#8c8c8c</item>
-        <item>#000000</item>
-        <item>#246ed3</item>
-        <item>#dcf2f9</item>
-        <item>#76bd2a</item>
-        <item>#000000</item>
-    </string-array>
-    <string name="title_activity_bottombar">bottombar</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+
+    <string name="title_activity_bottombar">bottombar</string>//
+                                                             //
+    <string name="title_home">Trends</string>               //sitie kazkodel svarbus
+    <string name="title_dashboard">News</string>           //
+    <string name="title_notifications">Portfolio</string> //
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
