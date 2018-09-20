@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
         moneyFragment.setInterfaceForFragments(this);
         newsFragment = new NewsFragment();
         cryptoExpFragment = new cryptoExpFragment();
+        portfolioFragment = new PortfolioFragment();
 
         if(public_stuff.FragmentNum == 1) setFragment(newsFragment, null);
         else if(public_stuff.FragmentNum == 0) setFragment(moneyFragment, null);
