@@ -1,5 +1,9 @@
 package meh.kitastest;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -18,18 +22,8 @@ public class public_stuff {
         public static String lol;
         public static int FragmentNum = 1;
 
+        //public Runnable ans_false = null;
 
-//        public static Runnable downloadCryptoPic(ImageView img, int position, int x, int y) {
 
-                        //String url = null;   // fotkems
-                       // try {
-                      //          url = public_stuff.visas.getJSONObject(0).getString(public_stuff.sortedTOP[position]);
-                    //    } catch (JSONException e) {
-                  //              e.printStackTrace();
-                //        }
-              //          Picasso.get().load(url).resize(x, y).centerCrop().into(img);
-           /// void run() {
-          //      return ;
-           // }
-        //}
+
 }

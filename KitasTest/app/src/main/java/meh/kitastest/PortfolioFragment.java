@@ -31,11 +31,11 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
 
 
 
-    ArrayList<String> list;
+    ArrayList<String> list ;
     ListView listView;
-    Button addButton;
-
-
+    Button addButton, removeHistory, subtractBtn;
+    SharedPreferences preferences;
+    String[] stockArr;
     public PortfolioFragment() {
         // Required empty public constructor
     }
@@ -45,43 +45,62 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         list = new ArrayList();
         list = getArrayList("owned");
-
-        String[] stockArr = new String[list.size()];
+        stockArr = new String[list.size()];
         stockArr = list.toArray(stockArr);
+        preferences = this.getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, stockArr);
-        for (int i = 0; i < list.size() ; i++) {
-            Log.d("ARraY", stockArr[i]);
-        }
+        list_adapter_portfolio listAdapterPortfolio = new list_adapter_portfolio(this, preferences, stockArr);
+
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, stockArr);
+        //for (int i = 0; i < list.size() ; i++) {
+        //    Log.d("ARraY", stockArr[i]);
+        //}
         // Assign adapter to ListView
 //        listView.setAdapter(adapter);
+
 
         View view  = inflater.inflate(R.layout.fragment_portfolio, container, false);
         addButton = (Button) view.findViewById(R.id.addButton);
         addButton.setOnClickListener( this);
+        removeHistory = (Button) view.findViewById(R.id.ClearHistory);
+        removeHistory.setOnClickListener(this);
+        subtractBtn = (Button) view.findViewById(R.id.subtractBtn);
+        subtractBtn.setOnClickListener(this);
+        listView = (ListView) view.findViewById(R.id.valiutos);
+        String[] array = new String[list.size()];
+        array = list.toArray(array);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, array);
+        listView.setAdapter(listAdapterPortfolio);
         return view;
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.addButton:
-                String[] stockArr = new String[list.size()];
-                stockArr = list.toArray(stockArr);
-
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, stockArr);
-                for (int i = 0; i < list.size() ; i++) {
-                    Log.d("ARraY", stockArr[i]);
-                }
-                createDialog();
+            case R.id.ClearHistory:
+                DialogClass confirmDialog = new DialogClass();
+                confirmDialog.Confirm(getActivity(), "Confirm", "This will delete all your portfolio", "Cancel", "OK", aproc());
                 break;
+
+            case R.id.addButton:
+
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, stockArr);
+            for (int i = 0; i < list.size() ; i++) {
+                Log.d("ARraY", stockArr[i]);
+            }
+           openDialog();
+            break;
 
         }
     }
 
-    private  void createDialog() {
+
+
+    private  void openDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View view = getLayoutInflater().inflate(R.layout.add_dialog, null);
 
@@ -93,7 +112,7 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                list.add(list.size(), spinner1.getSelectedItem().toString());
+                if(!list.contains(spinner1.getSelectedItem().toString()))list.add(list.size(), spinner1.getSelectedItem().toString());
                 saveArrayList();
                 //indexOF kas pasiimt elementa
             }
@@ -117,8 +136,18 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
         SharedPreferences prefs = this.getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = prefs.getString(key, null);
+        if(json == null) return new ArrayList<>();
         Type type = new TypeToken<ArrayList<String>>() {}.getType();
         return gson.fromJson(json, type);
+    }
+
+    public Runnable aproc(){
+        return new Runnable() {
+            public void run() {
+                list = new ArrayList<>();
+                saveArrayList();
+            }
+        };
     }
 
 

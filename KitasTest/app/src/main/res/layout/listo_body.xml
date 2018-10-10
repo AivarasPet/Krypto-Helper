@@ -61,7 +61,7 @@
             app:layout_constraintTop_toTopOf="@+id/white_bg" />
 
         <TextView
-            android:id="@+id/listChange24hr"
+            android:id="@+id/cryptoName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/price_usd"
@@ -115,7 +115,7 @@
             android:id="@+id/percent_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/listChange24hr"
+            android:layout_alignTop="@+id/cryptoName"
             android:layout_marginBottom="27dp"
             android:layout_marginStart="16dp"
             android:layout_toEndOf="@+id/logo"

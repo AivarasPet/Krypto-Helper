@@ -61,7 +61,7 @@ public class list_adapter_crypto extends BaseAdapter
             holder.pavadin = (TextView) convertView.findViewById(R.id.crypto_name);
             holder.img = (ImageView) convertView.findViewById(R.id.logo);
             holder.kaina = (TextView) convertView.findViewById(R.id.price_usd);
-            holder.pokytis = (TextView) convertView.findViewById(R.id.listChange24hr);
+            holder.pokytis = (TextView) convertView.findViewById(R.id.cryptoName);
 
             convertView.setTag(holder);
         }else{
@@ -80,8 +80,6 @@ public class list_adapter_crypto extends BaseAdapter
 
             String atsiusta = textas.getJSONObject(position).getString("price_usd").toString(); //KAINA
             atsiusta = String.format ("%,.2f", Double.parseDouble(atsiusta));
-            Log.d("DARO ", position+"");
-            if(position == 2) Log.d("RIPLLE", atsiusta);
             holder.kaina.setText("$ "+ atsiusta);
             String pokytis = textas.getJSONObject(position).getString("percent_change_24h").toString();
             if(pokytis.startsWith("-")) {
