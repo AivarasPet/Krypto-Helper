@@ -58,7 +58,6 @@ public class MoneyFragment extends Fragment {
                     bundle.putInt("KEY_POSITION", i);
                     bundle.putString("KEY_MODE", "ListClick");
                     interfaceForFragments.onActionInFragment(bundle);
-
                 }
 
                 //Intent intent = new Intent(getActivity(), currency_everything.class);

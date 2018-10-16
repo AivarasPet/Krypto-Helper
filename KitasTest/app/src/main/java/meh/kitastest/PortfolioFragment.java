@@ -5,12 +5,14 @@ import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -35,9 +37,15 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
     ListView listView;
     Button addButton, removeHistory, subtractBtn;
     SharedPreferences preferences;
+    InterfaceForFragments interfaceForFragments;
     String[] stockArr;
+    list_adapter_portfolio portfolio;
     public PortfolioFragment() {
         // Required empty public constructor
+    }
+
+    public  void setInterfaceForFragments(InterfaceForFragments interfaceForFragments) {
+        this.interfaceForFragments = interfaceForFragments;
     }
 
 
@@ -52,27 +60,17 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
         stockArr = list.toArray(stockArr);
         preferences = this.getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
 
-        list_adapter_portfolio listAdapterPortfolio = new list_adapter_portfolio(this, preferences, stockArr);
-
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, stockArr);
-        //for (int i = 0; i < list.size() ; i++) {
-        //    Log.d("ARraY", stockArr[i]);
-        //}
-        // Assign adapter to ListView
-//        listView.setAdapter(adapter);
 
 
         View view  = inflater.inflate(R.layout.fragment_portfolio, container, false);
         addButton = (Button) view.findViewById(R.id.addButton);
-        addButton.setOnClickListener( this);
+        addButton.setOnClickListener(this);
         removeHistory = (Button) view.findViewById(R.id.ClearHistory);
         removeHistory.setOnClickListener(this);
         subtractBtn = (Button) view.findViewById(R.id.subtractBtn);
         subtractBtn.setOnClickListener(this);
         listView = (ListView) view.findViewById(R.id.valiutos);
-        String[] array = new String[list.size()];
-        array = list.toArray(array);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, array);
+        list_adapter_portfolio listAdapterPortfolio = new list_adapter_portfolio(this, preferences, stockArr);
         listView.setAdapter(listAdapterPortfolio);
         return view;
     }
@@ -87,20 +85,22 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
 
             case R.id.addButton:
 
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, stockArr);
-            for (int i = 0; i < list.size() ; i++) {
+                for (int i = 0; i < list.size() ; i++) {
                 Log.d("ARraY", stockArr[i]);
-            }
-           openDialog();
-            break;
+                }
+                openDialog(true);
+                break;
+
+            case R.id.subtractBtn:
+                openDialog(false);
+                break;
 
         }
     }
 
 
 
-    private  void openDialog() {
+    private  void openDialog(final boolean isToAdd) { //teigiamas pridet, neigiamas atimt
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         View view = getLayoutInflater().inflate(R.layout.add_dialog, null);
 
@@ -108,20 +108,44 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         final Spinner spinner1 = (Spinner) view.findViewById(R.id.droplist);
         spinner1.setAdapter(adapter);
+        final EditText editText = (EditText) view.findViewById(R.id.sumInDialog);
+        builder.setView(view);
+        final AlertDialog dialog =  builder.create();
+        dialog.show();
+
         Button button = view.findViewById(R.id.addCryptoButton);
+        if(!isToAdd) button.setText("sub");
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!list.contains(spinner1.getSelectedItem().toString()))list.add(list.size(), spinner1.getSelectedItem().toString());
-                saveArrayList();
-                //indexOF kas pasiimt elementa
+                if (!TextUtils.isEmpty(editText.getText())) { //jei netuscias laukelis
+                    String valiuta = spinner1.getSelectedItem().toString();
+                    if (!list.contains(valiuta))
+                        list.add(list.size(), spinner1.getSelectedItem().toString());
+                    saveArrayList();
+                    if(isToAdd)saveSum(valiuta,  Float.valueOf(editText.getText().toString()));
+                    else saveSum(valiuta,  - Float.valueOf(editText.getText().toString())); //minusiukas
+                    dialog.dismiss();
+                }
             }
         });
 
-        builder.setView(view);
-        AlertDialog dialog =  builder.create();
-        dialog.show();
+
     }
+
+     void saveSum(String pav, float kiek){
+         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
+         SharedPreferences.Editor editor = sharedPreferences.edit();
+         float dabartinis = sharedPreferences.getFloat(pav, 0);
+         dabartinis = dabartinis + kiek;
+         if(dabartinis<0) {
+             dabartinis = 0;
+             list.remove(pav);
+             saveArrayList();
+         }
+         editor.putFloat(pav, dabartinis);
+         editor.apply();
+     }
 
     public void saveArrayList(){
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
@@ -130,6 +154,11 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
         String json = gson.toJson(list);
         editor.putString("owned", json);
         editor.apply();     // This line is IMPORTANT !!!
+
+        stockArr = new String[list.size()];
+        stockArr = list.toArray(stockArr);
+        list_adapter_portfolio Portfolio = new list_adapter_portfolio(this, preferences, stockArr);
+        listView.setAdapter(Portfolio);
     }
 
     public ArrayList<String> getArrayList(String key){
@@ -145,7 +174,15 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
         return new Runnable() {
             public void run() {
                 list = new ArrayList<>();
+                SharedPreferences.Editor editor = preferences.edit();
+                for (int i = 0; i < public_stuff.sortedTOP.length; i++) {
+                    editor.putFloat(public_stuff.sortedTOP[i], 0);
+                }
+                editor.apply();
                 saveArrayList();
+                //Bundle bundle = new Bundle();
+                //bundle.putString("KEY_MODE", "PortfolioFragment");
+                //interfaceForFragments.onActionInFragment(bundle);
             }
         };
     }

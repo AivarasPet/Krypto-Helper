@@ -27,11 +27,11 @@
             android:layout_marginTop="8dp"
             android:text="add"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editText"
+            app:layout_constraintStart_toEndOf="@+id/sumInDialog"
             app:layout_constraintTop_toBottomOf="@+id/droplist" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/sumInDialog"
             android:layout_width="249dp"
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"

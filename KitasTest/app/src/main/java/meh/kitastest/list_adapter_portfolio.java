@@ -26,6 +26,7 @@ public class list_adapter_portfolio extends BaseAdapter
     private String[] list;
     PortfolioFragment context;
     private LayoutInflater inflater;
+    SharedPreferences preferences;
 
     public list_adapter_portfolio(PortfolioFragment context, SharedPreferences preferences, String[] list)
     {
@@ -33,6 +34,7 @@ public class list_adapter_portfolio extends BaseAdapter
         this.context = context;
         this.inflater = context.getLayoutInflater();
         this.list = list;
+        this.preferences = preferences;
     }
 
     @Override
@@ -59,7 +61,7 @@ public class list_adapter_portfolio extends BaseAdapter
         if(convertView==null){
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.portfolio_listo_body, null);
-            holder.pavadin = (TextView) convertView.findViewById(R.id.crypto_name);
+            holder.pavadin = (TextView) convertView.findViewById(R.id.cryptoName);
             holder.img = (ImageView) convertView.findViewById(R.id.portfolioImage);
             holder.kiekis = (TextView) convertView.findViewById(R.id.cryptoAmount);
             holder.kiekisDol = (TextView) convertView.findViewById(R.id.CryptoDol);
@@ -70,21 +72,30 @@ public class list_adapter_portfolio extends BaseAdapter
         }
 
         try {
-            holder.pavadin.setText("lol");
+            String pav = list[position];
+            holder.pavadin.setText(pav);
 
-            Log.d("EEEEEE", list[position]);
-            Log.d("FFFFFF", public_stuff.sortedTOP[position]);
-                      // fotkems
-            //String url = public_stuff.visas.getJSONObject(0).getString(list[position]);
-            //Picasso.get().load(url).resize(128, 128).centerCrop().into(holder.img);
-                      // fotkems
+            String suma = preferences.getFloat(pav, 0) + "";
+            holder.kiekis.setText(suma);
 
-
-        }// catch (JSONException e) {
-        //    e.printStackTrace();
-        //}
+            int pozicija=0;
+            for (int i = 0; i < public_stuff.sortedTOP.length; i++) {
+                if(public_stuff.sortedTOP[i] == pav) {
+                    pozicija = i; break;
+                }
+            }
+            String kursas = public_stuff.money.getJSONObject(pozicija).getString("price_usd").toString();
+            float doleriais = Float.parseFloat(kursas)*Float.parseFloat(suma);
+            holder.kiekisDol.setText("$"+doleriais);
+            // fotkems
+            String url = public_stuff.visas.getJSONObject(0).getString(list[position]);
+            Picasso.get().load(url).resize(128, 128).centerCrop().into(holder.img);
+            // fotkems
+        }
         catch (NullPointerException e) {
-            Log.d("LOOOOOOOL", "NNNNNNNNNNNNXXXXXXXXXXXXX");
+            e.printStackTrace();
+        }
+        catch (JSONException e) {
             e.printStackTrace();
         }
 

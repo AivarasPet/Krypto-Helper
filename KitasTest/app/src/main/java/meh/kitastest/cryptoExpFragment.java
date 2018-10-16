@@ -31,18 +31,7 @@ public class cryptoExpFragment extends Fragment implements View.OnClickListener 
     FrameLayout frameLayout;
     public int kelintas;
 
-    String[] url = {
-            "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=XRP&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=BCH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=EOS&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=LTC&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=ADA&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=XLM&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=IOT&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-            "https://min-api.cryptocompare.com/data/histoday?fsym=TRX&tsym=USD&limit=30&aggregate=1&e=CCCAGG"
-    };
+
 
     public cryptoExpFragment() {
         // Required empty public constructor
@@ -103,15 +92,35 @@ public class cryptoExpFragment extends Fragment implements View.OnClickListener 
 
 
     private void createClass(int position, GraphView grafik) {
-        graph_adapter naujas = new graph_adapter();
-        naujas.graph = grafik;
-        naujas.isPreview = true;
-        naujas.pav = getResources().getStringArray(R.array.cryptoNames)[position];
-        //naujas.spalva = getResources().getStringArray(R.array.ColorsGraph)[position];
-        naujas.mode = 0;
-        naujas.context = getActivity();
-        naujas.run(url[position]);
-    }
+        // STAI KODAS GAUT URL: String url = )public_stuff.visas.getJSONObject(1).getString(public_stuff.sortedTOP[position];   // 1 yra menesio 2 - paros
+
+
+            graph_adapter graph = new graph_adapter();
+            graph.graph = grafik;
+            graph.txt = kaina;
+            graph.pav = public_stuff.sortedTOP[position];
+            try {
+                String spalva = public_stuff.visas.getJSONObject(3).getString(public_stuff.sortedTOP[position]).toString();
+                graph.spalva = spalva;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            graph.mode = 0;
+            graph.isPreview = true;
+            graph.context = getActivity();
+
+                String url = null;
+                try {
+                    url = public_stuff.visas.getJSONObject(1).getString(public_stuff.sortedTOP[position]).toString();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                graph.run(url);
+
+                graph.run(url);
+            }
+
+
 
     @Override
     public void onClick(View v) {

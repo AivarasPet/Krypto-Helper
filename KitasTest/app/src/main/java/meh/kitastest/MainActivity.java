@@ -83,12 +83,14 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
 
         toolbar = (BottomNavigationView) findViewById(R.id.toolbar);    // for bottom bar
         toolbar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        toolbar.getMenu().getItem(1).setChecked(true);
         MainFrame = (FrameLayout) findViewById(R.id.mainFrame);
         moneyFragment = new MoneyFragment();
         moneyFragment.setInterfaceForFragments(this);
         newsFragment = new NewsFragment();
         cryptoExpFragment = new cryptoExpFragment();
         portfolioFragment = new PortfolioFragment();
+        portfolioFragment.setInterfaceForFragments(this);
 
         if(public_stuff.FragmentNum == 1) setFragment(newsFragment, null);
         else if(public_stuff.FragmentNum == 0) setFragment(moneyFragment, null);
@@ -101,7 +103,7 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
                 toliau(result);
             }
         });
-        dl.webSite = "https://api.coinmarketcap.com/v1/ticker/?limit=10";
+        dl.webSite = public_stuff.mainUrl;
         dl.execute();
 
 
@@ -149,7 +151,7 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
 
     @Override
     public void onActionInFragment(Bundle bundle) {
-                setFragment(cryptoExpFragment, bundle);
+                setFragment(cryptoExpFragment, bundle); //nebutinai sita ijungia
     }
 
 
@@ -190,6 +192,10 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
                     int position = bundle.getInt("KEY_POSITION");
                     bundle2.putInt("KEY_POSITION", position); //is pirmo i antra
                     fragment.setArguments(bundle2);
+                    break;
+                case "PortfolioFragment":
+                    Log.d("daro ", " DARo");
+
                     break;
             }
         }
