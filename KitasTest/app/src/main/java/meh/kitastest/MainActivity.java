@@ -1,5 +1,6 @@
 package meh.kitastest;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -44,7 +45,6 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
     private PortfolioFragment portfolioFragment;
     private cryptoExpFragment cryptoExpFragment;
 
-
     boolean useLightTheme;
     SharedPreferences preferences;
     Button money_button, options_button, graph_button, news_button, info_button;
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
     @Override
     protected void onCreate(Bundle savedInstanceState) { //onCreate is used to start an activity
 
-    //  CODE FOR GETTING THE THEME
+        //  CODE FOR GETTING THE THEME
         preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         useLightTheme = preferences.getBoolean(PREF_LIGHT_THEME, true);
         enableTheme(useLightTheme);
@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
 
         toolbar = (BottomNavigationView) findViewById(R.id.toolbar);    // for bottom bar
         toolbar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        toolbar.getMenu().getItem(1).setChecked(true);
         MainFrame = (FrameLayout) findViewById(R.id.mainFrame);
         moneyFragment = new MoneyFragment();
         moneyFragment.setInterfaceForFragments(this);
@@ -92,8 +91,24 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
         portfolioFragment = new PortfolioFragment();
         portfolioFragment.setInterfaceForFragments(this);
 
-        if(public_stuff.FragmentNum == 1) setFragment(newsFragment, null);
-        else if(public_stuff.FragmentNum == 0) setFragment(moneyFragment, null);
+        if (public_stuff.currentFragment== "") setFragment(newsFragment, null);
+        else {
+            if(public_stuff.currentFragment == "GraphActivity") {
+                Bundle bundle = new Bundle();
+                bundle.putInt("KEY_POSITION", public_stuff.FragmentNum);
+                bundle.putString("KEY_MODE", "ListClick");
+                setFragment(cryptoExpFragment, bundle);
+            }
+            else if(public_stuff.currentFragment == "NewsFragment") {setFragment(newsFragment, null);  toolbar.getMenu().getItem(1).setChecked(true); }
+            else if(public_stuff.currentFragment == "PortfolioFragment") {setFragment(portfolioFragment, null);  toolbar.getMenu().getItem(2).setChecked(true); }
+            else if(public_stuff.currentFragment != "NewsFragment") {setFragment(moneyFragment, null); toolbar.getMenu().getItem(0).setChecked(true);}
+        }
+
+        String moneyData = preferences.getString("moneyData", "");
+        if (moneyData != "") {
+            toliau(moneyData);
+            public_stuff.sortedOnce = false;
+        }
 
 
         //Atsiuntimas:
@@ -107,7 +122,6 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
         dl.execute();
 
 
-
         if(isNetworkAvailable(getApplicationContext())) Toast.makeText(getApplicationContext(), "App won't work without Internet Connection!!!", Toast.LENGTH_LONG);
 
         String a = preferences.getString("topCrypto", "");
@@ -119,6 +133,19 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
     public boolean usabilityLightTheme() {
         return useLightTheme;
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //setFragment(newsFragment, null);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(public_stuff.currentFragment == "cryptoExpFragment") setFragment(moneyFragment, null);
+    }
+
 
     public void toggleTheme(boolean lightTheme) {
         SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
@@ -146,8 +173,12 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
         useLightTheme = preferences.getBoolean(PREF_LIGHT_THEME, false);
         enableTheme(useLightTheme);
         setContentView(R.layout.main_menu);
-
+        Log.d("restarin", "Reeee");
+        finish();
+        startActivity(getIntent());
     }
+
+
 
     @Override
     public void onActionInFragment(Bundle bundle) {
@@ -241,6 +272,7 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
             sb.append(a).append(",");
         }
         editor.putString("topCrypto", sb.toString());
+        editor.putString("moneyData", public_stuff.money.toString());
         editor.commit();
     }
 }

@@ -79,14 +79,23 @@ public class list_adapter_portfolio extends BaseAdapter
             holder.kiekis.setText(suma);
 
             int pozicija=0;
-            for (int i = 0; i < public_stuff.sortedTOP.length; i++) {
-                if(public_stuff.sortedTOP[i] == pav) {
-                    pozicija = i; break;
+            for (int i = 0; i < 10; i++) {
+                boolean a = false;
+                if(public_stuff.sortedTOP[i].length() == list[position].length()) {
+                    Log.d(" pav ", public_stuff.sortedTOP[i]);
+                    for(int x = 0; x < public_stuff.sortedTOP[i].length(); x++) {
+                        if(public_stuff.sortedTOP[i].charAt(x) != list[position].charAt(x)) { a = true;}
+                    }
+                    if(!a) { pozicija = i; break;}
                 }
+
+                //}
             }
             String kursas = public_stuff.money.getJSONObject(pozicija).getString("price_usd").toString();
             float doleriais = Float.parseFloat(kursas)*Float.parseFloat(suma);
+            public_stuff.AllInDollars += doleriais;
             holder.kiekisDol.setText("$"+doleriais);
+            Log.d(" pozicija ", ""+pozicija);
             // fotkems
             String url = public_stuff.visas.getJSONObject(0).getString(list[position]);
             Picasso.get().load(url).resize(128, 128).centerCrop().into(holder.img);

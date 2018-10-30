@@ -20,8 +20,10 @@ public class public_stuff {
         public static  int valiutuKiekis = 10;
         public static  String[] sortedTOP;
         public static String lol;
+        public static String currentFragment = "NewsFragment";
         public static int FragmentNum = 1;
         public static String mainUrl = "https://api.coinmarketcap.com/v1/ticker/?limit=10";
+        public static float AllInDollars = 0;
 
         //public Runnable ans_false = null;
 

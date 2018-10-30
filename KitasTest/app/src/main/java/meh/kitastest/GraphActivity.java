@@ -73,7 +73,7 @@ public class GraphActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(GraphActivity.this, MainActivity.class));
+        finish();
     }
 
 

@@ -61,6 +61,7 @@ public class cryptoExpFragment extends Fragment implements View.OnClickListener 
         kelintas = bundle.getInt("KEY_POSITION");
         handleLook(kelintas, public_stuff.money);
 
+        public_stuff.currentFragment = "cryptoExpFragment";
 
         createClass(kelintas, graph); //grafika
         String infoPre = getResources().getStringArray(R.array.Info)[kelintas];
@@ -137,6 +138,8 @@ public class cryptoExpFragment extends Fragment implements View.OnClickListener 
                 startActivity(intent);
                 break;
         }
+        public_stuff.currentFragment = "GraphActivity";
+        public_stuff.FragmentNum = kelintas;
         //Log.d("veik", "veik");
     }
 }

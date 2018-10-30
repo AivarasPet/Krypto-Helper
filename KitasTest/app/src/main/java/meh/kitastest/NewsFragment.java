@@ -47,6 +47,9 @@ public class NewsFragment extends Fragment  {
             dl.execute();
         }  // Streakai
         else makeList();
+
+        public_stuff.currentFragment = "NewsFragment";
+
         View view = inflater.inflate(R.layout.fragment_money, container, false);
         list = (ListView) view.findViewById(R.id.listView);
 

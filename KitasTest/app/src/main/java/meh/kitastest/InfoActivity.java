@@ -10,6 +10,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+
 public class InfoActivity extends AppCompatActivity {
 
 
@@ -27,18 +31,23 @@ public class InfoActivity extends AppCompatActivity {
 
         final Spinner spinner = (Spinner) findViewById(R.id.infoSpinner);
         ArrayAdapter<String > adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,  public_stuff.sortedTOP);
-// Specify the layout to use when the list of choices appears
+
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-// Apply the adapter to the spinner
+
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                //Toast.makeText(getApplicationContext(), position, Toast.LENGTH_LONG);
-                //Log.d("D", position+"");
-               // img.setImageResource(imgid[position]);
+                String url = null;
+                try {
+                    url = public_stuff.visas.getJSONObject(0).getString(public_stuff.sortedTOP[position]);
+                    Picasso.get().load(url).resize(128, 128).centerCrop().into(img);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 text.setText(getResources().getStringArray(R.array.Info)[position]);
             }
 

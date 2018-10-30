@@ -36,10 +36,12 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
     ArrayList<String> list ;
     ListView listView;
     Button addButton, removeHistory, subtractBtn;
+    TextView allInDolars;
     SharedPreferences preferences;
     InterfaceForFragments interfaceForFragments;
     String[] stockArr;
-    list_adapter_portfolio portfolio;
+    list_adapter_portfolio listAdapterPortfolio;
+
     public PortfolioFragment() {
         // Required empty public constructor
     }
@@ -60,7 +62,7 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
         stockArr = list.toArray(stockArr);
         preferences = this.getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
 
-
+        public_stuff.currentFragment = "PortfolioFragment";
 
         View view  = inflater.inflate(R.layout.fragment_portfolio, container, false);
         addButton = (Button) view.findViewById(R.id.addButton);
@@ -69,9 +71,11 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
         removeHistory.setOnClickListener(this);
         subtractBtn = (Button) view.findViewById(R.id.subtractBtn);
         subtractBtn.setOnClickListener(this);
+        allInDolars = (TextView) view.findViewById(R.id.Dollars);
         listView = (ListView) view.findViewById(R.id.valiutos);
-        list_adapter_portfolio listAdapterPortfolio = new list_adapter_portfolio(this, preferences, stockArr);
+        listAdapterPortfolio = new list_adapter_portfolio(this, preferences, stockArr);
         listView.setAdapter(listAdapterPortfolio);
+        setDollars();
         return view;
     }
 
@@ -138,7 +142,7 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
          SharedPreferences.Editor editor = sharedPreferences.edit();
          float dabartinis = sharedPreferences.getFloat(pav, 0);
          dabartinis = dabartinis + kiek;
-         if(dabartinis<0) {
+         if(dabartinis<=0) {
              dabartinis = 0;
              list.remove(pav);
              saveArrayList();
@@ -157,8 +161,9 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
 
         stockArr = new String[list.size()];
         stockArr = list.toArray(stockArr);
-        list_adapter_portfolio Portfolio = new list_adapter_portfolio(this, preferences, stockArr);
-        listView.setAdapter(Portfolio);
+        list_adapter_portfolio listAdapterPortfolio = new list_adapter_portfolio(this, preferences, stockArr);
+        listView.setAdapter(listAdapterPortfolio);
+        setDollars();
     }
 
     public ArrayList<String> getArrayList(String key){
@@ -185,6 +190,10 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
                 //interfaceForFragments.onActionInFragment(bundle);
             }
         };
+    }
+
+    private void setDollars() {
+        allInDolars.setText("$"+public_stuff.AllInDollars);
     }
 
 

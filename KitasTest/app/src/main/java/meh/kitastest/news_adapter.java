@@ -63,7 +63,7 @@ public class news_adapter extends BaseAdapter {
 
         try {
             String url = textas.getJSONObject(position).getString("imageurl").toString();
-            Picasso.get().load(url).resize(100, 100).centerCrop().into(holder.img);
+            Picasso.get().load(url).resize(512, 512).centerCrop().into(holder.img);
             holder.pavadin.setText(textas.getJSONObject(position).getString("title").toString());
 
 
