@@ -10,20 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="142dp"
-            android:layout_height="58dp"
-            android:elevation="0dp"
-            android:text="pls"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="0dp" />
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="120dp"
             android:layout_marginTop="40dp"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp">
@@ -31,7 +20,7 @@
             <TextView
                 android:id="@+id/NewsTitle"
                 android:layout_width="wrap_content"
-                android:layout_height="130dp"
+                android:layout_height="100dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -47,8 +36,8 @@
 
             <ImageView
                 android:id="@+id/NewsImage"
-                android:layout_width="125dp"
-                android:layout_height="125dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
@@ -57,7 +46,7 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="110dp"
                 android:layout_marginTop="5dp"
                 android:elevation="-1dp"
 

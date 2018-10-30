@@ -126,7 +126,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/imageView2"
-                    app:srcCompat="?android:textColor" />
+                    app:srcCompat="@color/colorWhite" />
 
                 <ImageView
                     android:id="@+id/mid_line2"
@@ -140,7 +140,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/imageView2"
                     app:layout_constraintStart_toStartOf="@+id/imageView2"
                     app:layout_constraintTop_toTopOf="@+id/imageView2"
-                    app:srcCompat="?android:textColor" />
+                    app:srcCompat="@color/colorWhite" />
 
                 <TextView
                     android:id="@+id/textView11"
@@ -250,6 +250,7 @@
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent" />
 
+<!--NELABAI BEREIKALINGAS
             <TextView
                 android:id="@+id/infoInDetails"
                 android:layout_width="match_parent"
@@ -275,7 +276,7 @@
                 android:textAlignment="center"
                 android:onClick="onClickDetails"
                 android:textSize="17sp" />
-
+-->
         </LinearLayout>
     </ScrollView>
 

@@ -23,4 +23,5 @@
     <color name="textWhite">#232529</color>
 
     <color name="colorTransparent">#00000000</color>
+    <color name="colorWhite">#fff</color>
 </resources>

@@ -7,7 +7,7 @@
         <item name="colorAccent">@color/colorAccentDark</item>
         <item name="android:background">@color/colorBackgroundDark</item>
         <item name="android:textColor">@color/textDark</item>
-        <item name="android:fontFamily">@font/black_ops_one</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
     </style>
 
 
@@ -18,7 +18,7 @@
         <item name="colorAccent">@color/colorAccentLight</item>
         <item name="android:background">@color/colorBackgroundLight</item>
         <item name="android:textColor">@color/textLight</item>
-        <item name="android:fontFamily">@font/black_ops_one</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
     </style>
 
     <!--                     WHITE THEME                          -->
@@ -28,7 +28,7 @@
         <item name="colorAccent">@color/colorAccentWhite</item>
         <item name="android:background">@color/colorBackgroundWhite</item>
         <item name="android:textColor">@color/textWhite</item>
-        <item name="android:fontFamily">@font/black_ops_one</item>
+        <item name="android:fontFamily">@font/lato_regular</item>
     </style>
 
 </resources>
