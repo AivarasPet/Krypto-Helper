@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     tools:context=".NewsFragment">
 
@@ -15,7 +16,20 @@
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent">
+
         </ListView>
+
+        <ImageView
+            android:id="@+id/imgbg"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="?android:background"
+            android:contentDescription="."
+            app:layout_constraintBottom_toBottomOf="@+id/listView"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
+
 </FrameLayout>

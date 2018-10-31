@@ -80,6 +80,7 @@ public class list_adapter_portfolio extends BaseAdapter
 
             int pozicija=0;
             for (int i = 0; i < 10; i++) {
+
                 boolean a = false;
                 if(public_stuff.sortedTOP[i].length() == list[position].length()) {
                     Log.d(" pav ", public_stuff.sortedTOP[i]);

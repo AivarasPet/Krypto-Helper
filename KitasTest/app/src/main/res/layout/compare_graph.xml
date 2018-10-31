@@ -105,9 +105,9 @@
 
                     android:layout_weight="1"
                     android:checked="true"
-                    android:fontFamily="@font/black_ops_one"
+                    android:fontFamily="?android:fontFamily"
                     android:text="Monthly"
-                    android:textColor="#fff"
+                    android:textColor="?android:textColor"
                     android:textSize="16sp"
                     tools:layout_editor_absoluteX="129dp"
                     tools:layout_editor_absoluteY="458dp" />
@@ -118,9 +118,9 @@
                     android:layout_height="wrap_content"
 
                     android:layout_weight="1"
-                    android:fontFamily="@font/black_ops_one"
+                    android:fontFamily="?android:fontFamily"
                     android:text="Hourly"
-                    android:textColor="#fff"
+                    android:textColor="?android:textColor"
                     android:textSize="16sp"
                     tools:layout_editor_absoluteX="129dp"
                     tools:layout_editor_absoluteY="499dp" />

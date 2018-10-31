@@ -20,6 +20,8 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -35,7 +37,7 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
 
     ArrayList<String> list ;
     ListView listView;
-    Button addButton, removeHistory, subtractBtn;
+    Button addButton, removeHistory, subtractBtn, convertBtn;
     TextView allInDolars;
     SharedPreferences preferences;
     InterfaceForFragments interfaceForFragments;
@@ -71,6 +73,8 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
         removeHistory.setOnClickListener(this);
         subtractBtn = (Button) view.findViewById(R.id.subtractBtn);
         subtractBtn.setOnClickListener(this);
+        convertBtn = (Button) view.findViewById(R.id.convertBtn);
+        convertBtn.setOnClickListener(this);
         allInDolars = (TextView) view.findViewById(R.id.Dollars);
         listView = (ListView) view.findViewById(R.id.valiutos);
         listAdapterPortfolio = new list_adapter_portfolio(this, preferences, stockArr);
@@ -99,6 +103,11 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
                 openDialog(false);
                 break;
 
+            case R.id.convertBtn:
+                convertDialog dialog = new convertDialog(getActivity());
+                dialog.show();
+                break;
+
         }
     }
 
@@ -112,7 +121,7 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         final Spinner spinner1 = (Spinner) view.findViewById(R.id.droplist);
         spinner1.setAdapter(adapter);
-        final EditText editText = (EditText) view.findViewById(R.id.sumInDialog);
+        final EditText editText = (EditText) view.findViewById(R.id.moneyEdit);
         builder.setView(view);
         final AlertDialog dialog =  builder.create();
         dialog.show();
@@ -125,11 +134,12 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
                 if (!TextUtils.isEmpty(editText.getText())) { //jei netuscias laukelis
                     String valiuta = spinner1.getSelectedItem().toString();
                     if (!list.contains(valiuta))
-                        list.add(list.size(), spinner1.getSelectedItem().toString());
+                    list.add(list.size(), spinner1.getSelectedItem().toString());
                     saveArrayList();
                     if(isToAdd)saveSum(valiuta,  Float.valueOf(editText.getText().toString()));
                     else saveSum(valiuta,  - Float.valueOf(editText.getText().toString())); //minusiukas
                     dialog.dismiss();
+                    setDollars();
                 }
             }
         });
@@ -163,7 +173,6 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
         stockArr = list.toArray(stockArr);
         list_adapter_portfolio listAdapterPortfolio = new list_adapter_portfolio(this, preferences, stockArr);
         listView.setAdapter(listAdapterPortfolio);
-        setDollars();
     }
 
     public ArrayList<String> getArrayList(String key){
@@ -185,6 +194,7 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
                 }
                 editor.apply();
                 saveArrayList();
+                setDollars();
                 //Bundle bundle = new Bundle();
                 //bundle.putString("KEY_MODE", "PortfolioFragment");
                 //interfaceForFragments.onActionInFragment(bundle);
@@ -193,7 +203,37 @@ public class PortfolioFragment extends Fragment implements View.OnClickListener 
     }
 
     private void setDollars() {
-        allInDolars.setText("$"+public_stuff.AllInDollars);
+        float dollars=0;
+
+        int pozicija = 0;
+        for (int i = 0; i < list.size(); i++) {
+            String suma = preferences.getFloat(stockArr[i], 0) + "";
+
+                for(int x = 0; x < 10; x++) { //surast atitinkanti
+
+                    boolean a = false;
+                    if(public_stuff.sortedTOP[x].length() == stockArr[i].length()) {
+                        for(int z = 0; z < public_stuff.sortedTOP[x].length(); z++) {
+                            if(public_stuff.sortedTOP[x].charAt(z) != stockArr[i].charAt(z)) { a = true;}
+                        }
+                        if(!a) { pozicija = x; break;}
+                    }
+
+
+                }
+
+            String kursas = null;
+            try {
+                Log.d(" pozicija ", pozicija+"");
+                kursas = public_stuff.money.getJSONObject(pozicija).getString("price_usd").toString();
+                dollars += Float.parseFloat(kursas)*Float.parseFloat(suma);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        allInDolars.setText("$"+dollars);
     }
 
 

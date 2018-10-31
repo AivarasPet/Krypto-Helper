@@ -57,7 +57,7 @@
         android:layout_height="40dp"
         android:layout_marginBottom="72dp"
         android:layout_marginTop="50dp"
-        android:fontFamily="@font/black_ops_one"
+        android:fontFamily="?android:fontFamily"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,9 +72,9 @@
             android:layout_marginLeft="40dp"
             android:layout_weight="1"
             android:checked="true"
-            android:fontFamily="@font/black_ops_one"
+            android:fontFamily="?android:fontFamily"
             android:text="Monthly"
-            android:textColor="#fff"
+            android:textColor="?android:textColor"
             android:textSize="20dp" />
 
         <RadioButton
@@ -83,9 +83,9 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="45dp"
             android:layout_weight="1"
-            android:fontFamily="@font/black_ops_one"
+            android:fontFamily="?android:fontFamily"
             android:text="Hourly"
-            android:textColor="#fff"
+            android:textColor="?android:textColor"
             android:textSize="20dp" />
 
     </RadioGroup>
@@ -113,7 +113,7 @@
         android:layout_marginTop="8dp"
         android:background="?android:colorAccent"
         android:text="Compare"
-        android:textColor="#fff"
+        android:textColor="?android:textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
