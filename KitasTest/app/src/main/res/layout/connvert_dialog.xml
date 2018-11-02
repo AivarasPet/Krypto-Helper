@@ -11,21 +11,20 @@
 
         <Spinner
             android:id="@+id/droplist"
-            android:layout_width="193dp"
+            android:layout_width="wrap_content"
             android:layout_height="52dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cryptoEdit"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/convertDo"
-            android:layout_width="83dp"
+            android:layout_width="wrap_content"
             android:layout_height="41dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:text="convert"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,29 +32,58 @@
             app:layout_constraintStart_toEndOf="@+id/moneyEdit"
             app:layout_constraintTop_toBottomOf="@+id/droplist" />
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Crypto"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/cryptoEdit"
+            app:layout_constraintEnd_toStartOf="@+id/cryptoEdit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cryptoEdit" />
+
         <EditText
             android:id="@+id/moneyEdit"
-            android:layout_width="145dp"
+            android:layout_width="115dp"
             android:layout_height="0dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/cryptoEdit"
+            app:layout_constraintStart_toStartOf="@+id/cryptoEdit"
             app:layout_constraintTop_toBottomOf="@+id/cryptoEdit" />
 
         <EditText
             android:id="@+id/cryptoEdit"
-            android:layout_width="143dp"
+            android:layout_width="115dp"
             android:layout_height="0dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="numberDecimal"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/droplist"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Cash"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/moneyEdit"
+            app:layout_constraintEnd_toStartOf="@+id/moneyEdit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/moneyEdit"
+            app:layout_constraintVertical_bias="0.3" />
     </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>
