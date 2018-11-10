@@ -274,6 +274,7 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
         editor.putString("topCrypto", sb.toString());
         editor.putString("moneyData", public_stuff.money.toString());
         editor.commit();
+        public_stuff.sortedTOP =sb.toString().split(",");
     }
 }
 
