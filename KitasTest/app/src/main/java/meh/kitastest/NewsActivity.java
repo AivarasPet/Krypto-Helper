@@ -1,8 +1,10 @@
 package meh.kitastest;
 
+import android.content.ComponentCallbacks2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -34,6 +36,9 @@ public class NewsActivity extends MainActivity {
             makeList();
 
     }
+
+
+
 
     private void toliau(String result) {
         try {

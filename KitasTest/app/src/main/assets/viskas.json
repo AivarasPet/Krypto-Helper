@@ -2,7 +2,7 @@
     {
         "name": "Photos", 
         "Bitcoin": "https://en.bitcoin.it/w/images/en/2/29/BC_Logo_.png",
-        "Ethereum": "https://pbs.twimg.com/profile_images/626149701189042177/LWpxKEv3_400x400.png",
+        "Ethereum": "http://techmaza.org/wp-content/uploads/2018/09/Ethereum.png",
         "XRP": "https://www.cryptosaurus.cc/ctrl/wp-content/uploads/RIPPLE.png",
         "Bitcoin Cash": "https://themerkle.com/wp-content/uploads/bitcoincash.png",
         "EOS": "http://www.stickpng.com/assets/images/5a5223262f93c7a8d5137fdc.png",
@@ -10,13 +10,15 @@
         "Stellar": "https://www.stellar.org/wp-content/uploads/2014/07/Twitter_avatar.png",
         "Cardano": "https://www.geldvisie.com/uploads/cardano-logo.jpg",
         "IOTA": "http://www.iranianarz.com/wp-content/uploads/2018/03/1400px-Iota_logo.png",
-        "TRON": "https://d3npzzrehyahmo.cloudfront.net/images/9c/f2/9cf2b174048d250eb1d8a3dd25991665_93166d79782_t.png",
+        "TRON": "https://res.cloudinary.com/teepublic/image/private/s--R7sSMovH--/t_Resized%20Artwork/c_fit,g_north_west,h_954,w_954/co_191919,e_outline:48/co_191919,e_outline:inner_fill:48/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/c_limit,f_jpg,h_630,q_90,w_630/v1514899921/production/designs/2246947_1.jpg",
         "Tether": "https://cdn.freebiesupply.com/logos/large/2x/tether-logo-png-transparent.png",
         "NEO": "https://neo.org/images/neo-logo/1024.png",
         "Dash": "https://i.pinimg.com/originals/b0/f5/ff/b0f5ff13b6449d68d7038bee35a1c6eb.png",
         "Monero": "https://getmonero.org/press-kit/symbols/monero-symbol-1280.png",
         "Binance Coin": "https://seeklogo.com/images/B/binance-coin-bnb-logo-97F9D55608-seeklogo.com.png",
-        "VeChain": "http://www.freelogovectors.net/wp-content/uploads/2018/02/VeChain-Logo.png"
+        "VeChain": "http://www.freelogovectors.net/wp-content/uploads/2018/02/VeChain-Logo.png",
+        "Bitcoin SV": "https://s2.coinmarketcap.com/static/img/coins/200x200/3602.png"
+
     },
     {
         "name": "grafikaiMenesis",
@@ -35,7 +37,8 @@
         "Dash": "https://min-api.cryptocompare.com/data/histoday?fsym=DASH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
         "Monero": "https://min-api.cryptocompare.com/data/histoday?fsym=XMR&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
         "Binance Coin": "https://min-api.cryptocompare.com/data/histoday?fsym=BNB&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "VeChain": "https://min-api.cryptocompare.com/data/histoday?fsym=VEN&tsym=USD&limit=30&aggregate=1&e=CCCAGG"
+        "VeChain": "https://min-api.cryptocompare.com/data/histoday?fsym=VEN&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "Bitcoin SV": "https://min-api.cryptocompare.com/data/histoday?fsym=BSV&tsym=USD&limit=30&aggregate=1&e=CCCAGG"
     },
     {
         "name": "grafikaiValandos",
@@ -54,7 +57,8 @@
         "Dash": "https://min-api.cryptocompare.com/data/histohour?fsym=DASH&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
         "Monero": "https://min-api.cryptocompare.com/data/histohour?fsym=XMR&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
         "Binance Coin": "https://min-api.cryptocompare.com/data/histohour?fsym=BNB&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
-        "VeChain": "https://min-api.cryptocompare.com/data/histohour?fsym=VEN&tsym=USD&limit=30&aggregate=1&e=CCCAGG"
+        "VeChain": "https://min-api.cryptocompare.com/data/histohour?fsym=VEN&tsym=USD&limit=30&aggregate=1&e=CCCAGG",
+        "Bitcoin SV": "https://min-api.cryptocompare.com/data/histohour?fsym=BSV&tsym=USD&limit=30&aggregate=1&e=CCCAGG"
     },
     {
         "name": "grafikaiSpalvos",
@@ -73,7 +77,8 @@
         "Dash": "#dcf2f9",
         "Monero": "#dcf2f9",
         "Binance Coin": "#dcf2f9",
-        "VeChain": "#dcf2f9"
+        "VeChain": "#dcf2f9",
+        "Bitcoin SV": "#0042da"
     }
 
     ]

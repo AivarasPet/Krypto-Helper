@@ -22,6 +22,28 @@ public class WebsiteActivity extends AppCompatActivity {
         webView.loadUrl(url);
     }
 
+    private static int sessionDepth = 0;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        sessionDepth++;
+        if(sessionDepth == 1){
+            finish();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (sessionDepth > 0)
+            sessionDepth--;
+        if (sessionDepth == 0) {
+            // app went to background
+        }
+    }
+
+
     @Override
     public void onBackPressed() {
         startActivity(new Intent(WebsiteActivity.this, MainActivity.class));
