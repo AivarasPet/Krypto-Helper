@@ -30,7 +30,6 @@
         <activity android:name=".GraphActivity" />
 
         <!-- MONEY -->
-        <activity android:name=".MoneyActivity" />
         <activity android:name=".currency_everything" />
 
         <!-- NEWS -->

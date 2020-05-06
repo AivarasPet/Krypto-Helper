@@ -13,6 +13,8 @@ package meh.kitastest;
         import org.json.JSONArray;
         import org.json.JSONException;
 
+        import java.sql.SQLOutput;
+
 /**
  * Created by Aivaras on 2018-03-26.
  */
@@ -35,7 +37,7 @@ public class list_adapter_crypto extends BaseAdapter
     @Override
     public int getCount() {
         //Log.d("buuuum", textas.length()+"");
-        return textas.length();
+        return 10;
     }
 
     @Override
@@ -91,6 +93,9 @@ public class list_adapter_crypto extends BaseAdapter
 
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+        catch (NullPointerException e) {
+            System.out.println("null EXCEPTION");
         }
 
 

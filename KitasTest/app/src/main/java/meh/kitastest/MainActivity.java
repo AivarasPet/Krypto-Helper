@@ -244,6 +244,7 @@ public class MainActivity extends AppCompatActivity  implements InterfaceForFrag
             final JSONArray textas = new JSONArray(result);
             //Log.d("myTag", textas.getJSONObject(0).getString("symbol").toString());
             //Log.d("Log.d", textas.length()+"");
+            System.out.println("DID IT");
             public_stuff.money = textas;
 
             if(public_stuff.sortedOnce == false) {
