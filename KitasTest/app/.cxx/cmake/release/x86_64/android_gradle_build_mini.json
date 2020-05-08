@@ -1,0 +1,19 @@
+{
+  "buildFiles": [
+    "E:\\Programming_software\\Android\\SDK\\ndk\\21.1.6352462\\build\\cmake\\platforms.cmake",
+    "E:\\Projects\\KryptoHelper\\Krypto\\KitasTest\\app\\CMakeLists.txt",
+    "E:\\Programming_software\\Android\\SDK\\ndk\\21.1.6352462\\build\\cmake\\android.toolchain.cmake"
+  ],
+  "cleanCommands": [
+    "E:\\Programming_software\\Android\\SDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\Projects\\KryptoHelper\\Krypto\\KitasTest\\app\\.cxx\\cmake\\release\\x86_64\" clean"
+  ],
+  "buildTargetsCommand": "E:\\Programming_software\\Android\\SDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"E:\\Projects\\KryptoHelper\\Krypto\\KitasTest\\app\\.cxx\\cmake\\release\\x86_64\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "native-lib-Release-x86_64": {
+      "artifactName": "native-lib",
+      "buildCommand": "E:\\Programming_software\\Android\\SDK\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\Projects\\KryptoHelper\\Krypto\\KitasTest\\app\\.cxx\\cmake\\release\\x86_64\" native-lib",
+      "abi": "x86_64",
+      "output": "E:\\Projects\\KryptoHelper\\Krypto\\KitasTest\\app\\build\\intermediates\\cmake\\release\\obj\\x86_64\\libnative-lib.so"
+    }
+  }
+}

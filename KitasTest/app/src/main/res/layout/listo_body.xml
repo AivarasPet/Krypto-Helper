@@ -15,14 +15,16 @@
         android:layout_marginTop="8dp"
         android:text="@+id/pavadin"
         android:textAlignment="textStart"
-        android:textSize="23sp" />
+        android:textSize="23sp"
+        android:gravity="start" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
-        android:background="?android:colorAccent">
+        android:background="?android:colorAccent"
+        tools:targetApi="lollipop">
 
         <!-- SITAS ATSAKINGAS UZ ISVAIZDA       /\ -->
 
@@ -39,7 +41,8 @@
             android:background="#fff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="8dp" />
 
         <ImageView
             android:id="@+id/logo"
@@ -77,7 +80,8 @@
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/percent_change"
-            app:layout_constraintTop_toTopOf="@+id/percent_change" />
+            app:layout_constraintTop_toTopOf="@+id/percent_change"
+            android:layout_marginLeft="3dp" />
 
         <TextView
             android:id="@+id/price_usd"
@@ -93,7 +97,9 @@
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/current_price"
-            app:layout_constraintTop_toTopOf="@+id/current_price" />
+            app:layout_constraintTop_toTopOf="@+id/current_price"
+            android:layout_marginLeft="8dp"
+            tools:targetApi="lollipop" />
 
         <TextView
             android:id="@+id/current_price"
@@ -106,10 +112,12 @@
             android:layout_toRightOf="@+id/logo"
             android:background="?android:colorAccent"
             android:fontFamily="@font/lato_regular"
-            android:text="@string/price_usd"
+            android:text="price"
             android:textColor="#fff"
             app:layout_constraintStart_toEndOf="@+id/white_bg"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="22dp"
+            tools:targetApi="lollipop" />
 
 
         <TextView
@@ -122,10 +130,12 @@
             android:layout_toEndOf="@+id/logo"
             android:layout_toRightOf="@+id/logo"
             android:background="?android:colorAccent"
-            android:text="@string/percent_change"
+            android:text="percent change"
             android:textColor="#fff"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/white_bg" />
+            app:layout_constraintStart_toEndOf="@+id/white_bg"
+            tools:ignore="NewApi"
+            android:layout_marginLeft="16dp" />
 
     </android.support.constraint.ConstraintLayout>
 
