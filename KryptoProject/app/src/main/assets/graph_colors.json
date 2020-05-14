@@ -1,0 +1,23 @@
+
+{
+        "name": "graphColours",
+        "BTC": "#f7931a",
+        "ETH": "#343535",
+        "XRP": "#0081c2",
+        "BCH": "#f7931a",
+        "BSV": "#8c8c8c",
+        "ETC": "#2cc94e",
+        "LTC": "#246ed3",
+        "XLM": "#dcf2f9",
+        "ADA": "#dcf2f9",
+        "IOTA": "#000000",
+        "TRX": "#dcf2f9",
+        "USDT": "#dcf2f9",
+        "NEO": "#11f743",
+        "Dash": "#dcf2f9",
+        "Monero": "#dcf2f9",
+        "BNB": "#e0c826",
+        "EOS": "#dcf2f9",
+        "ATOM": "#6417a3",
+        "BSV": "#0042da"
+}

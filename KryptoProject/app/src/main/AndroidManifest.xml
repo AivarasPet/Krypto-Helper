@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.scripts">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/improvised"
+        android:label="Krypto helper"
+        android:supportsRtl="true"
+        android:theme="@style/LightAppTheme">
+        <activity android:name="com.scripts.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <!-- GRAPH -->
+        <activity android:name="com.scripts.GraphActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+
+        <!-- MONEY -->
+
+        <!-- NEWS -->
+
+        <!-- OPTIONS -->
+        <activity
+            android:name="com.scripts.OptionsActivity"
+            android:screenOrientation="fullSensor" />
+
+        <!--
+             INFO
+            <activity android:name=".InfoActivity" />
+        -->
+
+        <activity android:name="com.scripts.WebsiteActivity" />
+        <activity android:name="com.scripts.InfoActivity" />
+        <activity
+            android:name="com.scripts.Bottombar"
+            android:label="bottom"></activity>
+    </application>
+
+</manifest>
